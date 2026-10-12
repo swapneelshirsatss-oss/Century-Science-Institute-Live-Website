@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
  * - Positions and trails are computed from elapsed time (not stored points), so motion stays
  *   smooth when the frame rate dips; tilt easing is frame-rate independent.
  * - Electrons on the far half of an orbit are drawn behind the CSI badge, near half in front.
+ * - Scrolling gives the electrons a short burst of speed that eases back (the page feels alive).
  * - Pauses when the hero is off-screen; draws one still frame for prefers-reduced-motion.
  */
 export default function AtomCanvas({ badgeSrc = "/brand/csi-badge.webp" }) {
@@ -32,7 +33,7 @@ export default function AtomCanvas({ badgeSrc = "/brand/csi-badge.webp" }) {
       { rot: -Math.PI / 2 + (2 * Math.PI) / 3, sp: 0.56, ph: 4.4 },
     ];
 
-    let S = 0, raf = 0, running = false, last = 0, clock = 0, tilt = 0, tiltT = 0;
+    let S = 0, raf = 0, running = false, last = 0, clock = 0, tilt = 0, tiltT = 0, boost = 0, lastY = window.scrollY;
 
     const fit = () => {
       S = cv.clientWidth;
@@ -73,7 +74,8 @@ export default function AtomCanvas({ badgeSrc = "/brand/csi-badge.webp" }) {
     const frame = (now) => {
       const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;
       last = now;
-      if (!reduce) clock += dt;
+      if (!reduce) clock += dt * (1 + boost);
+      boost *= Math.exp(-dt * 2.2); // speed burst fades over ~1 s
       tilt += (tiltT - tilt) * (1 - Math.exp(-dt * 3));
       const t = clock;
       cx.clearRect(0, 0, S, S);
@@ -107,6 +109,11 @@ export default function AtomCanvas({ badgeSrc = "/brand/csi-badge.webp" }) {
       tiltT = ((e.clientX - r.left) / r.width - 0.5) * 0.22;
     };
     const onLeave = () => { tiltT = 0; };
+    const onScroll = () => {
+      const y = window.scrollY;
+      boost = Math.min(boost + Math.abs(y - lastY) * 0.006, 2.2);
+      lastY = y;
+    };
 
     fit();
     badge.onload = () => frame(performance.now());
@@ -114,11 +121,13 @@ export default function AtomCanvas({ badgeSrc = "/brand/csi-badge.webp" }) {
     const io = new IntersectionObserver(([en]) => (en.isIntersecting ? start() : stop()));
     io.observe(hero);
     window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onScroll, { passive: true });
     hero.addEventListener("pointermove", onMove);
     hero.addEventListener("pointerleave", onLeave);
     return () => {
       stop(); io.disconnect();
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
       hero.removeEventListener("pointermove", onMove);
       hero.removeEventListener("pointerleave", onLeave);
     };

@@ -24,6 +24,7 @@ export default function CountUp({ value, className, as: Tag = "p", duration = 15
         const e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
         el.textContent = (to * e).toFixed(dec);
         if (p < 1) raf = requestAnimationFrame(step);
+        else el.classList.add("is-landed"); // CSS gives the final number a short gold flare
       };
       raf = requestAnimationFrame(step);
     }, { threshold: 0.6 });

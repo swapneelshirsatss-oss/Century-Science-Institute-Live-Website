@@ -66,7 +66,7 @@ export default function TestCalendar({ start = "2027-06-01", label = "2027–28 
           ))}
           {weeks.map((col, wi) =>
             col.map((c, di) => (
-              <span key={c.iso} className={`tc-c l${c.level}`} style={{ gridColumn: wi + 1, gridRow: di + 2 }} title={c.level >= 0 ? `${c.iso}: ${title[c.level]}` : undefined} />
+              <span key={c.iso} className={`tc-c l${c.level}`} style={{ gridColumn: wi + 1, gridRow: di + 2, "--w": wi }} title={c.level >= 0 ? `${c.iso}: ${title[c.level]}` : undefined} />
             )),
           )}
         </div>

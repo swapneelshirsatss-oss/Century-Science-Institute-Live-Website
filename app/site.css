@@ -508,3 +508,54 @@ body.site {
   border-color: rgba(63,182,195,.38); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 0 0 1px rgba(8,19,26,.6), 0 24px 60px -24px rgba(10,127,142,.6); }
 .tc::before { content: ""; position: absolute; left: 10%; right: 10%; top: -1px; height: 1px; background: var(--beam); }
+
+/* =====================================================================
+   Motion (one language: fade-up, staggered in reading order).
+   Timings follow UI scale: 600 ms reveals, 100 ms between siblings,
+   one easing curve everywhere. Classes are added by MotionLayer.js,
+   only to elements that start below the fold.
+   ===================================================================== */
+:root { --ease-out: cubic-bezier(.16, 1, .3, 1); }
+
+.rv-pending { opacity: 0; transform: translateY(22px); }
+.rv-pending.rv-in {
+  opacity: 1; transform: none;
+  transition: opacity .6s var(--ease-out) var(--rv-delay, 0ms), transform .7s var(--ease-out) var(--rv-delay, 0ms);
+}
+
+/* Hero atom: arrives just after the headline (headline 0-0.5 s, atom 0.3-1.2 s) */
+.x-atom { animation: x-atom-in .9s var(--ease-out) .3s both; }
+@keyframes x-atom-in { from { opacity: 0; transform: translateY(-50%) scale(.9) rotate(-8deg); } to { opacity: 1; transform: translateY(-50%) scale(1) rotate(0); } }
+@media (max-width: 760px) { @keyframes x-atom-in { from { opacity: 0; } to { opacity: .45; } } }
+
+/* Topper cards: lift with a teal glow on hover (mouse only) */
+@media (hover: hover) {
+  .x-tp { transition: transform .3s var(--ease-out); }
+  .x-tp .x-slot { transition: box-shadow .3s var(--ease-out); }
+  .x-tp:hover { transform: translateY(-6px); }
+  .x-tp:hover .x-slot { box-shadow: 0 0 0 1px rgba(63,182,195,.6), 0 18px 40px -16px rgba(10,127,142,.55); }
+  .x-crow .go { transition: transform .3s var(--ease-out), color .2s; }
+  .x-crow:hover .go { transform: translateX(6px); color: var(--steel); }
+  .x-board { transition: box-shadow .4s var(--ease-out); }
+  .x-board:hover { box-shadow: 0 0 0 1px rgba(63,182,195,.7), 0 36px 80px -26px rgba(10,127,142,.8), 0 0 60px -10px rgba(63,182,195,.45); }
+}
+
+/* Count-up lands: one gold flare on the final number */
+.x-score.is-landed { animation: x-flare 1.1s var(--ease-out) both; }
+@keyframes x-flare {
+  0% { text-shadow: 0 0 0 rgba(248,202,21,0); }
+  30% { text-shadow: 0 0 34px rgba(248,202,21,.75), 0 0 80px rgba(248,202,21,.35); }
+  100% { text-shadow: 0 0 18px rgba(248,202,21,.18); }
+}
+
+/* Test calendar fills week by week, left to right, like a year of practice */
+.tc.rv-pending .tc-c { opacity: 0; }
+.tc.rv-in .tc-c { animation: tc-fill .45s var(--ease-out) both; animation-delay: calc(250ms + var(--w, 0) * 16ms); }
+@keyframes tc-fill { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+.tc-key .tc-c { opacity: 1 !important; animation: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rv-pending { opacity: 1 !important; transform: none !important; }
+  .x-atom, .x-score.is-landed, .tc .tc-c { animation: none !important; }
+  .x-tp:hover { transform: none; }
+}

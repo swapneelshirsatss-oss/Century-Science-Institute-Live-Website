@@ -5,6 +5,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import MobileDock from "@/components/site/MobileDock";
 import EnquiryModal from "@/components/site/EnquiryModal";
+import MotionLayer from "@/components/site/MotionLayer";
 
 export default function ClientLayout({ children }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function ClientLayout({ children }) {
       <SiteFooter />
       <MobileDock onOpenAdmission={open} />
       <EnquiryModal isOpen={modalOpen} onClose={close} />
+      <MotionLayer />
     </>
   );
 }
