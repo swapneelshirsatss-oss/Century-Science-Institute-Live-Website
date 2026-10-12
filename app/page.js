@@ -166,10 +166,10 @@ export default function HomePage() {
 
       {/* ================= VISIT ================= */}
       <section className="x-sec x-visit" id="visit" aria-labelledby="visit-title">
-        <div className="x-wrap x-visit-grid">
+        <div className="x-wrap x-visit-grid x-visit-plain">
           <div>
-            <h2 id="visit-title" className="x-big x-h2" style={{ marginTop: 0 }}>Sit in a class before you pay a rupee.</h2>
-            <div className="x-ctas">
+            <h2 id="visit-title" className="x-sr">Visit the campus</h2>
+            <div className="x-ctas" style={{ marginTop: 0 }}>
               <DemoButton className="x-btn x-btn-ink">Book free counselling</DemoButton>
               <a className="x-btn x-btn-ink" href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener">WhatsApp us</a>
             </div>

@@ -703,3 +703,4 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 /* Director portraits: crop from the top on any shape */
 .x-dir .x-slot img { object-position: 50% 18%; }
 .gh-path a { display: inline-flex; align-items: center; min-height: 44px; }
+.x-visit-plain { align-items: center; }
