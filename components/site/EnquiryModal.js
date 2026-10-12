@@ -145,7 +145,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
             )}
 
             <button type="submit" className="x-btn x-btn-gold" disabled={state === "sending"} style={{ width: "100%", marginTop: 8 }}>
-              {state === "sending" ? "Sending…" : "Book my demo class"}
+              {state === "sending" ? "Sending…" : "Book a free demo class"}
             </button>
             <p className="x-modal-note">We use your number only to call you about admission.</p>
           </form>

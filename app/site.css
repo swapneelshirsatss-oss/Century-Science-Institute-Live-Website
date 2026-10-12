@@ -618,3 +618,88 @@ main#main:focus { outline: none; }
 .x-field-err { margin: 0; color: #B42318; font-size: 14px; font-weight: 600; }
 .x-field-err::before { content: "! "; font-weight: 800; }
 input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #B42318 !important; box-shadow: 0 0 0 3px rgba(180,35,24,.14) !important; }
+
+/* =====================================================================
+   Shared pieces for pages moved from the old template (DocPage, landing pages)
+   ===================================================================== */
+.gh-inline { color: var(--steel); font-weight: 600; }
+.gh-map { height: 380px; background: var(--slot); }
+.gh-map iframe { display: block; }
+.x-btn-line-ink { border-color: var(--ink); color: var(--ink); background: transparent; }
+.x-btn-line-ink:hover { background: var(--ink); color: var(--canvas); }
+.gh-box-b ul.gh-bullets { margin: 0 0 12px; padding-left: 20px; color: var(--ink-2); display: grid; gap: 6px; }
+.gh-box-b ul.gh-bullets strong { color: var(--ink); }
+.gh-box-b h4 { margin: 18px 0 6px; font-size: 17px; }
+.gh-box-b img { max-width: 100%; height: auto; border-radius: 4px; display: block; }
+/* Light content section used on landing pages */
+.x-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px 40px; }
+.x-pt { border-top: 3px solid var(--ink); padding-top: 16px; }
+.x-pt h3 { margin: 0; font-size: 21px; font-weight: 700; line-height: 1.3; }
+.x-pt p { margin: 8px 0 0; color: var(--ink-2); }
+.x-prose { max-width: 68ch; }
+.x-prose p { color: var(--ink-2); font-size: 17px; margin: 0 0 14px; }
+.x-band { background: var(--paper); border-block: 1px solid var(--line); }
+/* About page: Double Teaching band */
+.x-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); margin-top: 44px; }
+@media (max-width: 860px) { .x-about-grid { grid-template-columns: 1fr; } }
+.x-about-h3 { margin: 8px 0 0; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.2; color: var(--canvas); }
+.x-about-p { margin: 12px 0 0; color: var(--mist); }
+.x-steps { list-style: none; counter-reset: s; margin: 20px 0 0; padding: 0; display: grid; gap: 12px; }
+.x-steps li { counter-increment: s; position: relative; padding: 14px 16px 14px 56px; background: rgba(248,250,252,.05); border: 1px solid rgba(63,182,195,.28); }
+.x-steps li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 26px; height: 26px; display: grid; place-items: center; background: var(--gold); color: var(--on-gold); font-weight: 800; font-size: 14px; }
+.x-steps h4 { margin: 0; font-size: 17px; color: var(--canvas); }
+.x-steps p { margin: 4px 0 0; color: var(--mist); font-size: 15px; }
+.x-link-light { color: var(--gold); font-weight: 700; text-underline-offset: 5px; }
+.x-quote { margin: 20px 0 0; padding: 18px 20px; border-left: 4px solid var(--gold); background: rgba(248,250,252,.05); color: var(--canvas); font-size: 18px; line-height: 1.55; }
+.x-quote cite { display: block; margin-top: 10px; font-style: normal; font-size: 14px; color: var(--mist); }
+.x-ticks { list-style: none; margin: 20px 0 24px; padding: 0; display: grid; gap: 10px; color: var(--mist); }
+.x-ticks li { position: relative; padding-left: 28px; }
+.x-ticks li::before { content: ""; position: absolute; left: 0; top: .35em; width: 14px; height: 8px; border-left: 3px solid var(--gold); border-bottom: 3px solid var(--gold); transform: rotate(-45deg); }
+/* Toppers filter (GitHub-style segmented buttons) */
+.x-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.x-filter button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: 600 15px var(--font-text); cursor: pointer; border-radius: 6px; }
+.x-filter button span { min-width: 22px; padding: 0 7px; border-radius: 999px; background: #E6ECF0; font-size: 12.5px; line-height: 20px; text-align: center; }
+.x-filter button:hover { background: var(--hover); }
+.x-filter button[aria-pressed="true"] { background: var(--ink); color: var(--canvas); border-color: var(--ink); }
+.x-filter button[aria-pressed="true"] span { background: var(--gold); color: var(--on-gold); }
+@media (max-width: 860px) { .x-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.x-form textarea { font: 400 16px var(--font-text); color: var(--ink); background: #fff; border: 1.5px solid var(--line); padding: 12px; border-radius: 0; width: 100%; resize: vertical; }
+.x-form textarea:focus { outline: none; border-color: var(--aqua); box-shadow: 0 0 0 3px rgba(10,127,142,.18); }
+.x-form-row-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) { .x-form-row, .x-form-row-3 { grid-template-columns: 1fr; } }
+/* Gallery */
+.x-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; }
+@media (max-width: 960px) { .x-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .x-gallery { grid-template-columns: 1fr; } }
+.x-gallery figure { margin: 0; }
+.x-gallery .x-slot { aspect-ratio: 3 / 2; }
+.x-gallery figcaption h2 { margin: 12px 0 0; font-size: 19px; line-height: 1.3; }
+.x-gallery figcaption p { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; }
+/* Blog list */
+.x-posts { list-style: none; margin: 0; padding: 0; }
+.x-posts li + li { border-top: 1px solid var(--line); }
+.x-posts article { display: grid; grid-template-columns: 240px 1fr; gap: 20px; padding: 18px 16px; }
+@media (max-width: 640px) { .x-posts article { grid-template-columns: 1fr; } }
+.x-posts .x-slot { aspect-ratio: 1200 / 628; }
+.x-posts h2 { margin: 4px 0 6px; font-size: 21px; line-height: 1.3; }
+.x-posts h2 a { color: var(--ink); text-decoration: none; }
+.x-posts h2 a:hover { text-decoration: underline; }
+.x-posts p { margin: 0 0 10px; color: var(--ink-2); }
+.x-post-meta { font-size: 13.5px; }
+/* Article body */
+.x-article { font-size: 17px; }
+.x-article p, .x-article li { color: var(--ink-2); line-height: 1.7; }
+.x-article h2 { margin: 26px 0 10px; font-size: 24px; line-height: 1.3; color: var(--ink); }
+.x-article ul { padding-left: 22px; display: grid; gap: 8px; }
+.x-article strong { color: var(--ink); }
+.x-article figure { margin: 0 0 20px; }
+.x-article .x-slot { aspect-ratio: 1200 / 628; }
+/* Results board on phones: the portrait becomes a short 3:2 band (face kept by cropping from the top)
+   instead of a full-width 4:5 block that filled the whole screen. */
+@media (max-width: 860px) {
+  .x-board .x-slot { aspect-ratio: 3 / 2; }
+  .x-board .x-slot img { object-position: 50% 22%; }
+}
+/* Director portraits: crop from the top on any shape */
+.x-dir .x-slot img { object-position: 50% 18%; }
+.gh-path a { display: inline-flex; align-items: center; min-height: 44px; }

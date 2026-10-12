@@ -1,9 +1,4 @@
-import Link from "next/link";
-import { Sparkles, Phone, ArrowRight, CheckCircle2, Shield, Award } from "lucide-react";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import FAQSection from "@/components/FAQSection";
-import { instituteInfo } from "@/data/instituteData";
-
+import DocPage, { FaqBlock } from "@/components/site/DocPage";
 export const metadata = {
   title: "NDA Exam Preparation 2-Year Residential Course in Nagpur – CSI",
   description: "Comprehensive 2-Year NDA Residential Course in Nagpur with integrated 11th-12th Science, physical drills, SSB mentoring & mock tests.",
@@ -25,73 +20,25 @@ const faqs = [
 
 export default function NdaResidentialPage() {
   return (
-    <div className="space-y-0">
-      <Breadcrumbs items={[
-        { label: "Home", href: "/" },
-        { label: "NDA 2-Year Residential", href: "/national-defence-academy-exam-preparation-2-years-residential-course/" }
-      ]} />
-
-      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
-              <Shield className="w-3.5 h-3.5 text-amber-400" />
-              <span>Officer Training Pathway</span>
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              National Defence Academy (NDA) 2-Year Residential Course
-            </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Integrated 11th & 12th Science coaching with UPSC NDA written exam preparation, SSB interview fundamentals, personality development, and residential boarding in Nagpur.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-3">
-              <Link
-                href="/admission-form/"
-                className="px-7 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm transition shadow-lg shadow-amber-500/20"
-              >
-                Apply for NDA Batch
-              </Link>
-              <a
-                href={`tel:${instituteInfo.contact.phoneRaw}`}
-                className="px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition flex items-center gap-2"
-              >
-                <Phone className="w-4 h-4 text-amber-400" />
-                <span>Call: {instituteInfo.contact.phonePrimary}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F]">
-            Disciplined Officer Cadet Preparation from Class 11th
-          </h2>
-          <p className="text-slate-600 text-base leading-relaxed">
-            The NDA written exam conducted by UPSC tests Mathematics and General Ability (English, Physics, Chemistry, General Science, History, Geography, and Current Affairs). Our integrated residential course prepares students comprehensively while ensuring top marks in 12th board exams.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              "Mathematics (Algebra, Trig, Calculus & Stats)",
-              "General Ability Test (English & General Science)",
-              "Physical Fitness Drills & Morning Conditioning",
-              "SSB Interview Fundamentals & Public Speaking",
-              "11th & 12th Science State / CBSE Board Scoring",
-              "Hostel, Supervised Evening Prep & Nutritious Mess"
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-200">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span className="text-sm font-semibold text-slate-800">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <FAQSection faqs={faqs} title="Frequently Asked Questions: NDA Residential Course" />
-    </div>
+    <DocPage
+      crumbs={[{ label: "Home", href: "/" }, { label: "NDA 2-Year Residential", href: "/national-defence-academy-exam-preparation-2-years-residential-course/" }]}
+      pill="Officer Training Pathway"
+      title="National Defence Academy (NDA) 2-Year Residential Course"
+      lead="Integrated 11th & 12th Science coaching with UPSC NDA written exam preparation, SSB interview fundamentals, personality development, and residential boarding in Nagpur."
+      about={[["Duration", "2 years (Class 11 and 12)"], ["Eligibility", "Class 10 passed, boys and girls"], ["Covers", "UPSC NDA written, SSB basics, PCM boards"], ["Format", "Residential, Nagpur"]]}
+      sections={[
+        {
+          id: "overview", label: "Overview",
+          body: (
+            <>
+              <h3>Disciplined Officer Cadet Preparation from Class 11th</h3>
+              <p>The NDA written exam conducted by UPSC tests Mathematics and General Ability (English, Physics, Chemistry, General Science, History, Geography, and Current Affairs). Our integrated residential course prepares students comprehensively while ensuring top marks in 12th board exams.</p>
+            </>
+          ),
+        },
+        { id: "includes", label: "Course includes", count: 6, body: <ul className="gh-bullets">{["Mathematics (Algebra, Trig, Calculus & Stats)", "General Ability Test (English & General Science)", "Physical Fitness Drills & Morning Conditioning", "SSB Interview Fundamentals & Public Speaking", "11th & 12th Science State / CBSE Board Scoring", "Hostel, Supervised Evening Prep & Nutritious Mess"].map((x) => <li key={x}><strong>{x}</strong></li>)}</ul> },
+        { id: "faq", label: "FAQ", heading: "Frequently Asked Questions: NDA Residential Course", count: faqs.length, raw: true, body: <FaqBlock faqs={faqs} /> },
+      ]}
+    />
   );
 }

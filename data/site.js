@@ -1,3 +1,4 @@
+import { photos } from "./photos";
 /*
  * Content for the redesigned site.
  * Toppers: ONLY names and results published on the live site (centuryscienceinstitute.in,
@@ -50,7 +51,7 @@ export const tickerItems = [
 export const director = {
   name: "Mrs. Meghna Marchatwar",
   creds: ["M.Sc. Biology", "B.Ed.", "A.D.I.D.", "15+ years teaching"],
-  photo: null,
+  photo: photos.director,
 };
 
 /* Main courses shown on the homepage and /coaching/. All hrefs are existing live URLs. */
