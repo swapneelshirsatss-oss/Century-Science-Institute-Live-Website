@@ -3,6 +3,7 @@ import AtomCanvas from "@/components/site/AtomCanvas";
 import CountUp from "@/components/site/CountUp";
 import DemoButton from "@/components/site/DemoButton";
 import PhotoSlot from "@/components/site/PhotoSlot";
+import TestCalendar from "@/components/site/TestCalendar";
 import { contact, courses, director, featuredTopper, tickerItems, toppers } from "@/data/site";
 
 /* Title and description kept from the live homepage (SEO continuity). */
@@ -135,6 +136,7 @@ export default function HomePage() {
             <div><b>Weekly</b><span>tests, with a full mock each month</span></div>
             <div><b>7 days</b><span>open, 8:00 am to 8:30 pm</span></div>
           </div>
+          <TestCalendar />
         </div>
       </section>
 

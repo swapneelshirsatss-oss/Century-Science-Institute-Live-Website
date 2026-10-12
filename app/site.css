@@ -276,3 +276,105 @@ body.site {
 .x-modal-err a { color: var(--ink); font-weight: 700; }
 .x-modal-ok { margin: 0; font-size: 18px; font-weight: 600; }
 .x-modal-note { margin: 0; font-size: 13.5px; color: var(--ink-2); text-align: center; }
+
+/* ==========================================================================
+   GitHub-style course pages: calm structure, bordered sections, sticky tabs,
+   an About sidebar. Light, quiet, 6px radius; gold only for the active tab and the action.
+   ========================================================================== */
+.gh { background: var(--paper); }
+.gh-head { background: #fff; border-bottom: 1px solid var(--line); padding-block: 28px 18px; }
+.gh-path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: 18px; }
+.gh-path a { color: var(--steel); text-decoration: none; }
+.gh-path a:hover { text-decoration: underline; }
+.gh-path span[aria-hidden] { color: var(--ink-2); }
+.gh-path strong { color: var(--ink); }
+.gh-pill { margin-left: 4px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; }
+.gh-title { margin: 14px 0 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; max-width: 34ch; }
+.gh-lead { margin: 10px 0 0; color: var(--ink-2); max-width: 70ch; }
+
+.gh-tabs { position: sticky; top: 76px; z-index: 30; background: #fff; border-bottom: 1px solid var(--line); }
+.gh-tabs-in { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.gh-tabs-in::-webkit-scrollbar { display: none; }
+.gh-tabs a { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 14px 12px; white-space: nowrap; color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; border-radius: 6px; }
+.gh-tabs a:hover { background: var(--hover); }
+.gh-tabs a[aria-current="location"] { font-weight: 700; }
+.gh-tabs a[aria-current="location"]::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: -1px; height: 3px; border-radius: 3px; background: var(--gold); }
+.gh-count { display: inline-block; min-width: 20px; padding: 0 7px; font-size: 12px; font-weight: 600; line-height: 20px; text-align: center; border-radius: 999px; background: #E6ECF0; color: var(--ink); }
+
+.gh-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; padding-block: 28px 64px; align-items: start; }
+@media (max-width: 960px) { .gh-layout { grid-template-columns: 1fr; } .gh-side { order: -1; } }
+.gh-main { display: grid; gap: 20px; min-width: 0; }
+.gh-box { background: #fff; border: 1px solid var(--line); border-radius: 6px; scroll-margin-top: 140px; overflow: hidden; }
+.gh-box-h { display: flex; align-items: center; gap: 8px; margin: 0; padding: 12px 16px; font-size: 15px; font-weight: 700; background: #F3F6F8; border-bottom: 1px solid var(--line); }
+.gh-box-b { padding: 18px 20px 20px; }
+.gh-box-b h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.3; }
+.gh-box-b p { margin: 0 0 12px; color: var(--ink-2); max-width: 72ch; }
+.gh-box-b p:last-child { margin-bottom: 0; }
+.gh-box-foot { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 15px; }
+.gh-box-foot a { color: var(--steel); font-weight: 600; }
+
+.gh-split { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-bottom: 18px; }
+.gh-split div { padding: 12px 14px; background: #EAF4F5; font-size: 15px; }
+.gh-split div.g { background: #FDF3CB; }
+.gh-split b { display: block; font-size: 13px; color: var(--ink-2); }
+@media (max-width: 480px) { .gh-split { grid-template-columns: 1fr; } }
+.gh-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.gh-list li { display: grid; grid-template-columns: 220px 1fr; gap: 6px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+.gh-list li:first-child { border-top: 0; padding-top: 0; }
+.gh-list span { color: var(--ink-2); }
+@media (max-width: 640px) { .gh-list li { grid-template-columns: 1fr; } }
+
+.gh-table-wrap { overflow-x: auto; }
+.gh-table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.gh-table th, .gh-table td { text-align: left; vertical-align: top; padding: 12px 16px; border-top: 1px solid var(--line); }
+.gh-table thead th { border-top: 0; font-size: 13px; color: var(--ink-2); font-weight: 600; background: #FAFBFC; }
+.gh-table tbody th { font-weight: 700; white-space: nowrap; width: 1%; }
+.gh-table td { color: var(--ink-2); }
+.gh-table tbody tr:hover { background: #FAFBFC; }
+
+.gh-rows { list-style: none; margin: 0; padding: 0; }
+.gh-rows li { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); }
+.gh-rows li:first-child { border-top: 0; }
+.gh-av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #E6ECF0; font-weight: 700; font-size: 14px; color: var(--ink); }
+.gh-rn small { display: block; color: var(--ink-2); font-size: 14px; }
+.gh-score { font-family: var(--font-big); font-weight: 900; font-size: 26px; font-variant-numeric: tabular-nums; }
+
+.gh-faq details { border-top: 1px solid var(--line); }
+.gh-faq details:first-child { border-top: 0; }
+.gh-faq summary { cursor: pointer; padding: 14px 16px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.gh-faq summary::-webkit-details-marker { display: none; }
+.gh-faq summary::after { content: "+"; font-weight: 700; color: var(--ink-2); }
+.gh-faq details[open] summary::after { content: "–"; }
+.gh-faq details p { margin: 0; padding: 0 16px 16px; color: var(--ink-2); max-width: 72ch; }
+
+.gh-side-in { position: sticky; top: 140px; }
+.gh-side h2 { margin: 0 0 10px; font-size: 15px; font-weight: 700; }
+.gh-facts { margin: 0 0 16px; display: grid; gap: 10px; font-size: 15px; }
+.gh-facts div { display: grid; gap: 1px; }
+.gh-facts dt { color: var(--ink-2); font-size: 13px; }
+.gh-facts dd { margin: 0; font-weight: 600; }
+.gh-cta { width: 100%; padding: 14px 18px; border-radius: 6px; font-size: 16px; }
+.gh-side-link { display: inline-block; margin-top: 10px; color: var(--steel); font-weight: 600; font-size: 15px; }
+.gh-side hr { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
+.gh-side-p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+.gh-side-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 15px; }
+.gh-side-list a { color: var(--steel); text-decoration: none; }
+.gh-side-list a:hover { text-decoration: underline; }
+@media (max-width: 960px) { .gh-side-in { position: static; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px; } .gh-side hr, .gh-side h2:not(:first-child), .gh-side-p, .gh-side-list, .gh-side-link[target] { display: none; } }
+@media (max-width: 1080px) { .gh-tabs { top: 76px; } }
+
+/* ---------- Test calendar (GitHub contribution style) ---------- */
+.tc { margin: 48px 0 0; padding: 18px 18px 14px; border: 1px solid rgba(248,250,252,.16); border-radius: 6px; background: rgba(14,29,39,.45); }
+.tc-cap { margin: 0 0 14px; color: var(--mist); font-size: 15.5px; }
+.tc-cap strong { color: var(--canvas); }
+.tc-scroll { overflow-x: auto; }
+.tc-grid { display: grid; grid-template-rows: 16px repeat(7, auto); gap: 3px; min-width: 640px; }
+.tc-m { grid-row: 1; font-size: 12px; color: var(--mist); white-space: nowrap; }
+.tc-c { display: block; aspect-ratio: 1; border-radius: 2px; background: rgba(10,127,142,.28); outline: 1px solid rgba(248,250,252,.04); outline-offset: -1px; }
+.tc-c.l-1 { background: transparent; outline: 0; }
+.tc-c.l1 { background: #2FB3C2; }
+.tc-c.l2 { background: var(--gold); }
+.tc-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-top: 12px; font-size: 13px; color: var(--mist); }
+.tc-key { display: inline-flex; align-items: center; gap: 6px; }
+.tc-key .tc-c { width: 11px; height: 11px; display: inline-block; }
+.tc-key .tc-c + * { margin-right: 6px; }
