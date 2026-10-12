@@ -44,7 +44,7 @@ export default function JeeBlogPage() {
             <>
               <h3>Need Guidance from IIT/NIT Mentors?</h3>
               <p>Schedule a diagnostic meeting at our Hudkeshwar Road campus in Nagpur.</p>
-              <DemoButton className="x-btn x-btn-gold x-btn-sm">Book a free demo class</DemoButton>
+              <DemoButton className="x-btn x-btn-gold x-btn-sm">Book free counselling</DemoButton>
             </>
           ),
         },

@@ -12,7 +12,7 @@ export default function ClientLayout({ children }) {
   const open = () => setModalOpen(true);
   const close = useCallback(() => setModalOpen(false), []);
 
-  // Any "Book a free demo" button on any page opens the same enquiry form.
+  // Any "Book free counselling" button on any page opens the same enquiry form.
   useEffect(() => {
     window.addEventListener("csi:open-demo", open);
     return () => window.removeEventListener("csi:open-demo", open);

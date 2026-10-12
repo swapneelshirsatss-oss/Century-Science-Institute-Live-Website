@@ -88,7 +88,7 @@ export default function AboutUsPage() {
               <ul className="x-ticks">
                 {accountability.map((x) => <li key={x}>{x}</li>)}
               </ul>
-              <DemoButton className="x-btn x-btn-gold" >Book a free demo class</DemoButton>
+              <DemoButton className="x-btn x-btn-gold" >Book free counselling</DemoButton>
             </div>
           </div>
         </div>

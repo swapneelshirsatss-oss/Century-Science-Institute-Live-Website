@@ -7,7 +7,7 @@ export default function MobileDock({ onOpenAdmission }) {
     <nav className="x-dock" aria-label="Quick actions">
       <a href={`tel:${contact.phonePrimaryRaw}`}>Call</a>
       <a href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent("Hello CSI, I want details about admissions.")}`} target="_blank" rel="noopener">WhatsApp</a>
-      <button type="button" className="g" onClick={onOpenAdmission}>Free demo class</button>
+      <button type="button" className="g" onClick={onOpenAdmission}>Free counselling</button>
     </nav>
   );
 }

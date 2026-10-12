@@ -75,7 +75,7 @@ export default function DocPage({ crumbs, title, lead, pill = "Admissions open 2
               </>
             )}
             {side}
-            {cta && <DemoButton className="x-btn x-btn-gold gh-cta">Book a free demo class</DemoButton>}
+            {cta && <DemoButton className="x-btn x-btn-gold gh-cta">Book free counselling</DemoButton>}
             <a className="gh-side-link" href={`tel:${contact.phonePrimaryRaw}`}>Call {contact.phonePrimary}</a>
             <hr />
             <h2>Centre</h2>

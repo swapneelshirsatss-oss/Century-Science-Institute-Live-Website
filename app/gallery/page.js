@@ -43,7 +43,7 @@ export default function GalleryPage() {
             ))}
           </div>
           <div className="x-ctas" style={{ marginTop: 44 }}>
-            <DemoButton>Book a free demo class</DemoButton>
+            <DemoButton>Book free counselling</DemoButton>
           </div>
         </div>
       </section>

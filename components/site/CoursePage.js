@@ -150,7 +150,7 @@ export default function CoursePage({ c }) {
             <dl className="gh-facts">
               {c.about.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
             </dl>
-            <DemoButton className="x-btn x-btn-gold gh-cta">Book a free demo class</DemoButton>
+            <DemoButton className="x-btn x-btn-gold gh-cta">Book free counselling</DemoButton>
             <a className="gh-side-link" href={`tel:${contact.phonePrimaryRaw}`}>Call {contact.phonePrimary}</a>
             <hr />
             <h2>Centre</h2>

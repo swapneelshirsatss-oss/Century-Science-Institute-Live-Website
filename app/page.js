@@ -170,7 +170,7 @@ export default function HomePage() {
           <div>
             <h2 id="visit-title" className="x-big x-h2" style={{ marginTop: 0 }}>Sit in a class before you pay a rupee.</h2>
             <div className="x-ctas">
-              <DemoButton className="x-btn x-btn-ink">Book a free demo class</DemoButton>
+              <DemoButton className="x-btn x-btn-ink">Book free counselling</DemoButton>
               <a className="x-btn x-btn-ink" href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener">WhatsApp us</a>
             </div>
           </div>

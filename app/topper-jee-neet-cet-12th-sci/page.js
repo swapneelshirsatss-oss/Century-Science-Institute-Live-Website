@@ -34,7 +34,7 @@ export default function ToppersPage() {
           </div>
           <div>
             <p style={{ margin: "0 0 20px", fontSize: 18 }}>Join Nagpur&apos;s most disciplined and focused entrance coaching. Early admission benefits and scholarship diagnostics are now open for 2027–28.</p>
-            <DemoButton className="x-btn x-btn-ink">Book a free demo class</DemoButton>
+            <DemoButton className="x-btn x-btn-ink">Book free counselling</DemoButton>
           </div>
         </div>
       </section>

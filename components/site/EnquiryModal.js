@@ -8,7 +8,7 @@ const EXAMS = ["JEE", "NEET", "MHT-CET", "11th & 12th Science", "10th test serie
 const CLASSES = ["Class 10", "Class 11", "Class 12", "12th pass (repeater)"];
 
 /**
- * Site-wide "Book a free demo class" form.
+ * Site-wide "Book free counselling" form.
  * Shows a real result: success only when the API confirms delivery; otherwise the error
  * plus call and WhatsApp options, so an enquiry is never silently lost.
  */
@@ -87,14 +87,14 @@ export default function EnquiryModal({ isOpen, onClose }) {
     }
   };
 
-  const waText = encodeURIComponent(`Hello CSI, I'd like a free demo class. Name: ${form.name}. Exam: ${form.course}. Class: ${form.studentClass}.`);
+  const waText = encodeURIComponent(`Hello CSI, I'd like a free counselling session. Name: ${form.name}. Exam: ${form.course}. Class: ${form.studentClass}.`);
 
   return (
     <div className="x-modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="x-modal" role="dialog" aria-modal="true" aria-labelledby="enq-title" ref={dialogRef}>
         <div className="x-modal-head">
           <p className="x-kicker"><i aria-hidden="true" />Admissions open for 2027–28</p>
-          <h2 id="enq-title" className="x-big">Book a free demo class</h2>
+          <h2 id="enq-title" className="x-big">Book free counselling</h2>
           <button type="button" className="x-modal-x" onClick={onClose} aria-label="Close">Close</button>
         </div>
 
@@ -145,7 +145,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
             )}
 
             <button type="submit" className="x-btn x-btn-gold" disabled={state === "sending"} style={{ width: "100%", marginTop: 8 }}>
-              {state === "sending" ? "Sending…" : "Book a free demo class"}
+              {state === "sending" ? "Sending…" : "Book free counselling"}
             </button>
             <p className="x-modal-note">We use your number only to call you about admission.</p>
           </form>

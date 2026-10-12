@@ -33,7 +33,7 @@ export default function TenthTestSeries() {
         title="10th Std test series"
         lead="Weekly board-pattern tests for Class 10 students on Hudkeshwar Road, Nagpur, checked the way board examiners mark."
       >
-        <div className="x-ctas"><DemoButton>Book a free demo class</DemoButton></div>
+        <div className="x-ctas"><DemoButton>Book free counselling</DemoButton></div>
       </PageHero>
       <section className="x-sec">
         <div className="x-wrap" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "32px 40px" }}>

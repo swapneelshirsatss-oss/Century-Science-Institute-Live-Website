@@ -58,7 +58,7 @@ export default function SiteHeader({ onOpenAdmission }) {
         </nav>
 
         <button type="button" className="x-btn x-btn-gold x-btn-sm x-cta" onClick={onOpenAdmission}>
-          Book a free demo class
+          Book free counselling
         </button>
         <button type="button" className="x-burger" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((v) => !v)}>
           {open ? "Close" : "Menu"}

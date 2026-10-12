@@ -44,7 +44,7 @@ export default function CetBlogPage() {
             <>
               <h3>Admissions Open for MHT-CET Batches</h3>
               <p>Separate PCM and PCB batches with limited capacity.</p>
-              <DemoButton className="x-btn x-btn-gold x-btn-sm">Book a free demo class</DemoButton>
+              <DemoButton className="x-btn x-btn-gold x-btn-sm">Book free counselling</DemoButton>
             </>
           ),
         },
