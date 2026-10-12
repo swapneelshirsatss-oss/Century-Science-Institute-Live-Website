@@ -2,23 +2,33 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { courses, programs, nav, contact } from "@/data/site";
 
 export default function SiteHeader({ onOpenAdmission }) {
   const [open, setOpen] = useState(false);
+  const [coursesOpen, setCoursesOpen] = useState(false);
+  const dropBtn = useRef(null);
   const pathname = usePathname();
 
-  // Close the mobile menu after navigating
-  useEffect(() => { setOpen(false); }, [pathname]);
+  // Close menus after navigating
+  useEffect(() => { setOpen(false); setCoursesOpen(false); }, [pathname]);
+
+  // Courses menu: Escape closes it and returns focus to the button (keyboard users)
+  const onDropKey = (e) => {
+    if (e.key === "Escape" && coursesOpen) { setCoursesOpen(false); dropBtn.current?.focus(); }
+  };
+  // Close when focus moves outside the menu
+  const onDropBlur = (e) => { if (!e.currentTarget.contains(e.relatedTarget)) setCoursesOpen(false); };
 
   const current = (href) => (pathname === href || pathname === href.replace(/\/$/, "") ? "page" : undefined);
 
   return (
     <header className="x-header">
+      <a href="#main" className="x-skip">Skip to content</a>
       <div className="x-wrap x-header-in">
-        <Link href="/" className="x-brand" aria-label="Century Science Institute, home">
+        <Link href="/" className="x-brand">
           <span className="x-brand-mark">
             <Image src="/brand/csi-mark.webp" alt="" width={42} height={38} priority />
           </span>
@@ -29,9 +39,9 @@ export default function SiteHeader({ onOpenAdmission }) {
         </Link>
 
         <nav className="x-nav" aria-label="Main">
-          <div className="x-drop">
-            <button type="button" aria-haspopup="true">Courses</button>
-            <div className="x-drop-menu">
+          <div className="x-drop" data-open={coursesOpen} onKeyDown={onDropKey} onBlur={onDropBlur}>
+            <button type="button" ref={dropBtn} aria-expanded={coursesOpen} aria-controls="courses-menu" onClick={() => setCoursesOpen((v) => !v)}>Courses</button>
+            <div className="x-drop-menu" id="courses-menu">
               {courses.map((c) => (
                 <Link key={c.href} href={c.href} aria-current={current(c.href)}>{c.name === "11th & 12th" ? "11th & 12th Science" : `${c.name} coaching`}</Link>
               ))}

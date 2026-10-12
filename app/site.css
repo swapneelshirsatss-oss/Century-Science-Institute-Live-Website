@@ -107,10 +107,11 @@ body.site {
 .x-nav .x-tel { font-variant-numeric: tabular-nums; color: var(--canvas); }
 .x-drop { position: relative; }
 .x-drop-menu { position: absolute; top: 100%; left: 0; min-width: 280px; background: var(--slate); border-top: 3px solid var(--gold); padding: 8px 0; display: none; box-shadow: 0 24px 48px -24px rgba(0,0,0,.6); }
-.x-drop:hover .x-drop-menu, .x-drop:focus-within .x-drop-menu, .x-drop[data-open="true"] .x-drop-menu { display: block; }
+@media (hover: hover) { .x-drop:hover .x-drop-menu { display: block; } }
+.x-drop[data-open="true"] .x-drop-menu { display: block; }
 .x-drop-menu a { display: block; padding: 10px 18px; color: var(--mist); text-decoration: none; font-size: 15px; }
 .x-drop-menu a:hover { background: var(--night); color: var(--canvas); }
-.x-burger { display: none; margin-left: auto; background: none; border: 1px solid rgba(248,250,252,.35); color: var(--canvas); font: 700 15px var(--font-text); padding: 10px 14px; cursor: pointer; }
+.x-burger { display: none; margin-left: auto; background: none; border: 1px solid rgba(248,250,252,.35); color: var(--canvas); font: 700 15px var(--font-text); padding: 10px 14px; min-height: 44px; min-width: 44px; cursor: pointer; }
 @media (max-width: 1080px) {
   .x-nav { display: none; }
   .x-burger { display: inline-flex; }
@@ -585,3 +586,23 @@ main#main::before {
     -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.25) 50%, rgba(0,0,0,.7));
             mask-image: linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.25) 50%, rgba(0,0,0,.7)); }
 }
+
+/* =====================================================================
+   Accessibility fixes (WCAG 2.1 AA audit, 12 Oct 2026)
+   ===================================================================== */
+/* Skip link: hidden until focused with Tab */
+.x-skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--gold); color: var(--on-gold); font: 700 15px var(--font-text); padding: 12px 18px; text-decoration: none; }
+.x-skip:focus { top: 12px; }
+main#main:focus { outline: none; }
+/* Screen-reader-only text */
+.x-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* Ticker: pause on hover, keyboard focus, or the pause button */
+.x-ticker:hover ul, .x-ticker:focus-within ul, .x-ticker[data-paused="true"] ul { animation-play-state: paused; }
+.x-ticker-btn { position: absolute; right: 0; top: 0; bottom: 0; z-index: 3; min-width: 72px; padding: 0 16px; border: 0; border-left: 2px solid rgba(14,29,39,.25);
+  background: var(--gold); color: var(--on-gold); font: 700 14px var(--font-text); cursor: pointer; box-shadow: -18px 0 18px -6px var(--gold); }
+.x-ticker-btn:hover { background: var(--gold-hi); }
+/* Calendar region gets a visible focus ring when tabbed to */
+.tc-scroll:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+/* Hour 1: keep the lightest part of the gradient at 4.5:1 or better for its body text */
+.x-h1b { background: linear-gradient(180deg, #0A7A87 0%, var(--steel) 45%, #085F6A 100%); }
+.gh-table-wrap:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }

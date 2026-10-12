@@ -58,7 +58,7 @@ export default function TestCalendar({ start = "2027-06-01", label = "2027–28 
       <figcaption className="tc-cap">
         <strong>{total} tests</strong> planned in the {label}: one every week, and the last one each month is a full-length mock.
       </figcaption>
-      <div className="tc-scroll">
+      <div className="tc-scroll" tabIndex={0} role="region" aria-label={`Test calendar, ${label}. Scroll sideways to see the full year.`}>
         <div className="tc-grid" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }} role="img"
           aria-label={`Planned test calendar for the ${label}: ${nTests} weekly tests and ${nMocks} monthly full mocks.`}>
           {monthLabels.map((m) => (

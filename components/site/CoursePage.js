@@ -95,7 +95,7 @@ export default function CoursePage({ c }) {
 
           <section id="syllabus" className="gh-box">
             <h2 className="gh-box-h">Syllabus</h2>
-            <div className="gh-table-wrap">
+            <div className="gh-table-wrap" tabIndex={0} role="region" aria-label="Syllabus table">
               <table className="gh-table">
                 <thead><tr><th scope="col">Subject</th><th scope="col">What we cover</th></tr></thead>
                 <tbody>{c.syllabus.map(([s, d]) => <tr key={s}><th scope="row">{s}</th><td>{d}</td></tr>)}</tbody>
@@ -105,7 +105,7 @@ export default function CoursePage({ c }) {
 
           <section id="tests" className="gh-box">
             <h2 className="gh-box-h">Tests <span className="gh-count">{c.tests.length}</span></h2>
-            <div className="gh-table-wrap">
+            <div className="gh-table-wrap" tabIndex={0} role="region" aria-label="Test schedule table">
               <table className="gh-table">
                 <thead><tr><th scope="col">Test</th><th scope="col">How often</th><th scope="col">Format</th></tr></thead>
                 <tbody>{c.tests.map(([t, f, m]) => <tr key={t}><th scope="row">{t}</th><td>{f}</td><td>{m}</td></tr>)}</tbody>

@@ -21,7 +21,7 @@ export default function ClientLayout({ children }) {
   return (
     <>
       <SiteHeader onOpenAdmission={open} />
-      <main id="main">{children}</main>
+      <main id="main" tabIndex={-1}>{children}</main>
       <SiteFooter />
       <MobileDock onOpenAdmission={open} />
       <EnquiryModal isOpen={modalOpen} onClose={close} />

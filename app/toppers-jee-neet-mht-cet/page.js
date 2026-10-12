@@ -57,7 +57,7 @@ export default function AboutUsPage() {
                   className="w-full h-auto object-cover"
                 />
                 <div className="p-6 bg-slate-900 text-white">
-                  <h3 className="text-xl font-bold">Mrs. Meghna Marchatwar</h3>
+                  <p className="text-xl font-bold">Mrs. Meghna Marchatwar</p>
                   <p className="text-xs text-amber-400 font-semibold mt-0.5">
                     M.Sc. in Biology, B.Ed., A.D.I.D. (15+ Years Experience)
                   </p>
@@ -88,11 +88,11 @@ export default function AboutUsPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm">Self-Owned Campus</h4>
+                  <h3 className="font-bold text-slate-900 text-sm">Self-Owned Campus</h3>
                   <p className="text-xs text-slate-500 mt-1">Dedicated institutional building on Hudkeshwar Road with zero commercial distractions.</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm">Residential Facility</h4>
+                  <h3 className="font-bold text-slate-900 text-sm">Residential Facility</h3>
                   <p className="text-xs text-slate-500 mt-1">Safe and supervised on-campus hostel and dining for outstation students.</p>
                 </div>
               </div>

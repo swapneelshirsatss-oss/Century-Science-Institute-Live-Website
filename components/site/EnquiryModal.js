@@ -22,7 +22,18 @@ export default function EnquiryModal({ isOpen, onClose }) {
     if (!isOpen) return;
     const prev = document.activeElement;
     firstField.current?.focus();
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    const onKey = (e) => {
+      if (e.key === "Escape") { onClose(); return; }
+      // Keep Tab / Shift+Tab inside the dialog while it is open
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const f = [...dialogRef.current.querySelectorAll('a[href],button:not([disabled]),input:not([tabindex="-1"]),select,textarea')]
+        .filter((el) => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      else if (!dialogRef.current.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {

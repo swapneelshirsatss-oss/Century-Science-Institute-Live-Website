@@ -83,7 +83,7 @@ export default function GalleryPage() {
                   />
                 </div>
                 <div className="p-6 space-y-2">
-                  <h3 className="font-extrabold text-base text-slate-900">{img.title}</h3>
+                  <h2 className="font-extrabold text-base text-slate-900">{img.title}</h2>
                   <p className="text-xs text-slate-600 leading-relaxed">{img.desc}</p>
                 </div>
               </div>

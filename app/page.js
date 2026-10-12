@@ -4,6 +4,7 @@ import CountUp from "@/components/site/CountUp";
 import DemoButton from "@/components/site/DemoButton";
 import PhotoSlot from "@/components/site/PhotoSlot";
 import TestCalendar from "@/components/site/TestCalendar";
+import Ticker from "@/components/site/Ticker";
 import { contact, courses, director, featuredTopper, tickerItems, toppers } from "@/data/site";
 
 /* Title and description kept from the live homepage (SEO continuity). */
@@ -30,8 +31,6 @@ function wave(amp, mid = 60, period = 200, width = 2400, step = 10) {
 }
 
 export default function HomePage() {
-  const tickerRow = [...tickerItems, ...tickerItems];
-
   return (
     <>
       {/* ================= HERO ================= */}
@@ -60,15 +59,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="x-ticker" aria-label="Recent results">
-          <ul>
-            {tickerRow.map((t, i) => (
-              <li key={i} aria-hidden={i >= tickerItems.length ? "true" : undefined}>
-                <b>{t.score}</b>{t.text}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Ticker items={tickerItems} />
       </section>
 
       {/* ================= RESULTS ================= */}

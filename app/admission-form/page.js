@@ -89,9 +89,9 @@ export default function AdmissionFormPage() {
                 <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle className="w-12 h-12" />
                 </div>
-                <h3 className="text-2xl font-extrabold text-slate-900">
+                <h2 className="text-2xl font-extrabold text-slate-900">
                   Application Submitted Successfully!
-                </h3>
+                </h2>
                 <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
                   Thank you, <strong>{formData.studentName}</strong>. Your admission inquiry has been logged in our system. Director Mrs. Meghna Marchatwar&apos;s team will contact you at <strong>{formData.phone}</strong> shortly.
                 </p>
@@ -115,16 +115,17 @@ export default function AdmissionFormPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="border-b border-slate-100 pb-4">
-                  <h3 className="text-lg font-bold text-[#16303F]">Student & Academic Information</h3>
+                  <h2 className="text-lg font-bold text-[#16303F]">Student & Academic Information</h2>
                   <p className="text-xs text-slate-500">Please provide accurate contact details for batch scheduling.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-student" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Student Full Name *
                     </label>
                     <input
+                      id="af-student"
                       type="text"
                       required
                       placeholder="e.g. Rahul Sharma"
@@ -135,10 +136,11 @@ export default function AdmissionFormPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-parent" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Parent / Guardian Name *
                     </label>
                     <input
+                      id="af-parent"
                       type="text"
                       required
                       placeholder="Parent's name"
@@ -151,10 +153,11 @@ export default function AdmissionFormPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-phone" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Contact Mobile Number *
                     </label>
                     <input
+                      id="af-phone"
                       type="tel"
                       required
                       pattern="[0-9]{10}"
@@ -166,10 +169,11 @@ export default function AdmissionFormPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-email" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Email Address (Optional)
                     </label>
                     <input
+                      id="af-email"
                       type="email"
                       placeholder="your.email@gmail.com"
                       value={formData.email}
@@ -181,10 +185,11 @@ export default function AdmissionFormPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-exam" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Target Exam *
                     </label>
                     <select
+                      id="af-exam"
                       value={formData.targetExam}
                       onChange={(e) => setFormData({ ...formData, targetExam: e.target.value })}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 text-sm outline-none bg-white"
@@ -199,10 +204,11 @@ export default function AdmissionFormPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-class" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Current Class *
                     </label>
                     <select
+                      id="af-class"
                       value={formData.currentClass}
                       onChange={(e) => setFormData({ ...formData, currentClass: e.target.value })}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 text-sm outline-none bg-white"
@@ -215,10 +221,11 @@ export default function AdmissionFormPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                    <label htmlFor="af-hostel" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                       Residential Hostel?
                     </label>
                     <select
+                      id="af-hostel"
                       value={formData.residentialRequired}
                       onChange={(e) => setFormData({ ...formData, residentialRequired: e.target.value })}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 text-sm outline-none bg-white"
@@ -230,10 +237,11 @@ export default function AdmissionFormPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                  <label htmlFor="af-address" className="block text-xs font-bold text-slate-700 uppercase mb-1">
                     Current Residential Address in Nagpur or District
                   </label>
                   <textarea
+                    id="af-address"
                     rows={2}
                     placeholder="Enter city / area"
                     value={formData.address}
