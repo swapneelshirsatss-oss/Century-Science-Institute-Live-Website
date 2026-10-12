@@ -483,8 +483,7 @@ body.site {
 /* Horizon: a bright line where the sky meets the results ticker, with light spilling up */
 .x-ticker { box-shadow: 0 -1px 0 rgba(160,232,240,.85), 0 -18px 50px -6px rgba(63,182,195,.55); }
 
-/* Atom: a touch of bloom so it reads as the light source */
-.x-atom { filter: drop-shadow(0 0 28px rgba(63,182,195,.35)); }
+/* Atom bloom is drawn inside the canvas (AtomCanvas.js): a CSS filter here would re-run every frame. */
 
 /* Results board: framed like GitHub's product window, glowing edge and soft coloured shadow */
 .x-board {
@@ -606,3 +605,16 @@ main#main:focus { outline: none; }
 /* Hour 1: keep the lightest part of the gradient at 4.5:1 or better for its body text */
 .x-h1b { background: linear-gradient(180deg, #0A7A87 0%, var(--steel) 45%, #085F6A 100%); }
 .gh-table-wrap:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+/* Calendar: mocks differ from weekly tests by shape too, not only colour (1.4.1):
+   a dark centre dot marks a full mock. Class days a little more visible. */
+.tc-c { background: rgba(63,182,195,.20); }
+.tc-c.l1 { background: #2FB3C2; }
+.tc-c.l2 { background: radial-gradient(circle, var(--night) 0 26%, transparent 30%), var(--gold); }
+.tc-c.l-1 { background: transparent; }
+/* Form fields with inline errors */
+.x-field { display: grid; gap: 6px; }
+.x-field > label { font-weight: 600; font-size: 15px; }
+.x-form input[aria-invalid="true"] { border-color: #B42318; box-shadow: 0 0 0 3px rgba(180,35,24,.14); }
+.x-field-err { margin: 0; color: #B42318; font-size: 14px; font-weight: 600; }
+.x-field-err::before { content: "! "; font-weight: 800; }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #B42318 !important; box-shadow: 0 0 0 3px rgba(180,35,24,.14) !important; }

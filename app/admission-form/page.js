@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Send, CheckCircle, GraduationCap, Phone, User, BookOpen, Clock, ShieldCheck } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { instituteInfo, coursesList } from "@/data/instituteData";
+import { normalizeMobile, PHONE_ERROR } from "@/lib/phone";
 
 export default function AdmissionFormPage() {
   const [formData, setFormData] = useState({
@@ -23,10 +24,23 @@ export default function AdmissionFormPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const [error, setError] = useState("");
+  const [fieldErr, setFieldErr] = useState({});
+  // Field errors are shown under the field, linked with aria-describedby (WCAG 3.3.1)
+  const errProps = (k) => fieldErr[k] ? { "aria-invalid": "true", "aria-describedby": `${k}-err` } : {};
+  const errText = (k) => fieldErr[k] ? <p id={`${k}-err`} className="mt-1 text-sm font-semibold text-[#B42318]">! {fieldErr[k]}</p> : null;
 
   // Map this form's fields to the enquiry API and only show success when delivery is confirmed.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errs = {};
+    if (!formData.studentName.trim()) errs["af-student"] = "Enter the student's full name.";
+    if (!formData.parentName.trim()) errs["af-parent"] = "Enter the parent or guardian's name.";
+    const phone = normalizeMobile(formData.phone);
+    if (!phone) errs["af-phone"] = PHONE_ERROR;
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errs["af-email"] = "Enter a valid email, or leave it empty.";
+    setFieldErr(errs);
+    const first = Object.keys(errs)[0];
+    if (first) { document.getElementById(first)?.focus(); return; }
     setSubmitting(true);
     setError("");
     try {
@@ -35,7 +49,7 @@ export default function AdmissionFormPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.studentName,
-          phone: formData.phone,
+          phone,
           course: formData.targetExam,
           studentClass: formData.currentClass,
           message: [
@@ -113,7 +127,7 @@ export default function AdmissionFormPage() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="border-b border-slate-100 pb-4">
                   <h2 className="text-lg font-bold text-[#16303F]">Student & Academic Information</h2>
                   <p className="text-xs text-slate-500">Please provide accurate contact details for batch scheduling.</p>
@@ -126,6 +140,7 @@ export default function AdmissionFormPage() {
                     </label>
                     <input
                       id="af-student"
+                      {...errProps("af-student")}
                       type="text"
                       required
                       placeholder="e.g. Rahul Sharma"
@@ -133,6 +148,7 @@ export default function AdmissionFormPage() {
                       onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm outline-none transition"
                     />
+                    {errText("af-student")}
                   </div>
 
                   <div>
@@ -141,6 +157,7 @@ export default function AdmissionFormPage() {
                     </label>
                     <input
                       id="af-parent"
+                      {...errProps("af-parent")}
                       type="text"
                       required
                       placeholder="Parent's name"
@@ -148,9 +165,9 @@ export default function AdmissionFormPage() {
                       onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm outline-none transition"
                     />
+                    {errText("af-parent")}
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="af-phone" className="block text-xs font-bold text-slate-700 uppercase mb-1">
@@ -158,14 +175,17 @@ export default function AdmissionFormPage() {
                     </label>
                     <input
                       id="af-phone"
+                      {...errProps("af-phone")}
                       type="tel"
                       required
-                      pattern="[0-9]{10}"
+                      inputMode="tel"
+                      autoComplete="tel"
                       placeholder="10-digit number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm outline-none transition"
                     />
+                    {errText("af-phone")}
                   </div>
 
                   <div>
@@ -174,12 +194,14 @@ export default function AdmissionFormPage() {
                     </label>
                     <input
                       id="af-email"
+                      {...errProps("af-email")}
                       type="email"
                       placeholder="your.email@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm outline-none transition"
                     />
+                    {errText("af-email")}
                   </div>
                 </div>
 

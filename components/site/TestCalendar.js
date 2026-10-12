@@ -74,7 +74,7 @@ export default function TestCalendar({ start = "2027-06-01", label = "2027–28 
       <div className="tc-foot">
         <span>Planned schedule. Exact dates are shared at admission.</span>
         <span className="tc-key">
-          <i className="tc-c l0" /> Class day <i className="tc-c l1" /> Weekly test <i className="tc-c l2" /> Full mock
+          <i className="tc-c l0" /> Class day <i className="tc-c l1" /> Weekly test <i className="tc-c l2" /> Full mock (dotted)
         </span>
       </div>
     </figure>

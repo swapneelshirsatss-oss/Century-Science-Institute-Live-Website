@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { contact } from "@/data/site";
+import { normalizeMobile, PHONE_ERROR } from "@/lib/phone";
 
 const EXAMS = ["JEE", "NEET", "MHT-CET", "11th & 12th Science", "10th test series", "Residential course", "NDA / Naval Academy"];
 const CLASSES = ["Class 10", "Class 11", "Class 12", "12th pass (repeater)"];
@@ -14,6 +15,7 @@ const CLASSES = ["Class 10", "Class 11", "Class 12", "12th pass (repeater)"];
 export default function EnquiryModal({ isOpen, onClose }) {
   const [state, setState] = useState("idle"); // idle | sending | sent | failed
   const [error, setError] = useState("");
+  const [fieldErr, setFieldErr] = useState({}); // { name?: string, phone?: string }
   const [form, setForm] = useState({ name: "", phone: "", course: "JEE", studentClass: "Class 11", parentName: "", website: "" });
   const dialogRef = useRef(null);
   const firstField = useRef(null);
@@ -43,14 +45,27 @@ export default function EnquiryModal({ isOpen, onClose }) {
     };
   }, [isOpen, onClose]);
 
-  useEffect(() => { if (!isOpen) { setState("idle"); setError(""); } }, [isOpen]);
+  useEffect(() => { if (!isOpen) { setState("idle"); setError(""); setFieldErr({}); } }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const set = (k) => (e) => {
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+    if (fieldErr[k]) setFieldErr((x) => ({ ...x, [k]: undefined }));
+  };
 
   const submit = async (e) => {
     e.preventDefault();
+    // Check fields first; say what is wrong next to the field and move focus there (WCAG 3.3.1)
+    const errs = {};
+    if (!form.name.trim()) errs.name = "Enter the student's name.";
+    const phone = normalizeMobile(form.phone);
+    if (!phone) errs.phone = PHONE_ERROR;
+    setFieldErr(errs);
+    if (errs.name || errs.phone) {
+      dialogRef.current?.querySelector(errs.name ? "#enq-name" : "#enq-phone")?.focus();
+      return;
+    }
     setState("sending"); setError("");
     try {
       const res = await fetch("/api/inquiry/", {
@@ -58,6 +73,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          phone,
           message: form.parentName ? `Parent: ${form.parentName}` : "",
           page: window.location.pathname,
         }),
@@ -90,13 +106,19 @@ export default function EnquiryModal({ isOpen, onClose }) {
             </div>
           </div>
         ) : (
-          <form className="x-modal-body x-form" onSubmit={submit} noValidate={false}>
-            <label>Student name
-              <input ref={firstField} required autoComplete="name" value={form.name} onChange={set("name")} />
-            </label>
-            <label>Mobile or WhatsApp number
-              <input required type="tel" inputMode="numeric" pattern="[0-9]{10}" title="10-digit mobile number" autoComplete="tel-national" value={form.phone} onChange={set("phone")} />
-            </label>
+          <form className="x-modal-body x-form" onSubmit={submit} noValidate>
+            <div className="x-field">
+            <label htmlFor="enq-name">Student name</label>
+            <input id="enq-name" ref={firstField} required autoComplete="name" value={form.name} onChange={set("name")}
+              aria-invalid={fieldErr.name ? "true" : undefined} aria-describedby={fieldErr.name ? "enq-name-err" : undefined} />
+            {fieldErr.name && <p id="enq-name-err" className="x-field-err">{fieldErr.name}</p>}
+            </div>
+            <div className="x-field">
+            <label htmlFor="enq-phone">Mobile or WhatsApp number</label>
+            <input id="enq-phone" required type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={set("phone")}
+              aria-invalid={fieldErr.phone ? "true" : undefined} aria-describedby={fieldErr.phone ? "enq-phone-err" : undefined} />
+            {fieldErr.phone && <p id="enq-phone-err" className="x-field-err">{fieldErr.phone}</p>}
+            </div>
             <div className="x-form-row">
               <label>Exam
                 <select value={form.course} onChange={set("course")}>{EXAMS.map((x) => <option key={x}>{x}</option>)}</select>

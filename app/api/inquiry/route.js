@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { normalizeMobile } from "@/lib/phone";
 
 /*
  * Enquiry delivery.
@@ -33,8 +34,8 @@ export async function POST(request) {
     receivedAt: new Date().toISOString(),
   };
 
-  const digits = lead.phone.replace(/\D/g, "");
-  if (!lead.name || digits.length < 10) {
+  lead.phone = normalizeMobile(lead.phone);
+  if (!lead.name || !lead.phone) {
     return NextResponse.json(
       { success: false, message: "Please enter your name and a 10-digit mobile number." },
       { status: 422 },
