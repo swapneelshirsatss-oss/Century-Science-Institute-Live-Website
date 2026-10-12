@@ -51,7 +51,7 @@ export default function GalleryPage() {
         { label: "Campus Gallery", href: "/gallery/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
             <Camera className="w-3.5 h-3.5" />
@@ -93,7 +93,7 @@ export default function GalleryPage() {
           <div className="mt-16 text-center">
             <Link
               href="/admission-form/"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#0b1e3d] hover:bg-blue-900 text-amber-400 font-bold text-sm transition shadow-md"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#16303F] hover:bg-blue-900 text-amber-400 font-bold text-sm transition shadow-md"
             >
               <span>Visit Campus in Person & Schedule Free Counselling →</span>
             </Link>

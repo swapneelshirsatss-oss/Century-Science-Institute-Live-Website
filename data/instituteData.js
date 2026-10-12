@@ -31,13 +31,8 @@ export const instituteInfo = {
     youtube: "https://www.youtube.com/@csi_JEE_NEET_classes_nagpur",
     linkedin: "https://www.linkedin.com/company/century-science-institute-neet-jee-mht-cet-classes-in-nagpur"
   },
-  stats: [
-    { label: "Teaching Excellence", value: "15+ Yrs", suffix: "Continuous Top Ranks" },
-    { label: "Successful Alumni", value: "2,500+", suffix: "Doctors & Engineers" },
-    { label: "Highest CET/JEE Score", value: "99.8%ile", suffix: "State Rankers" },
-    { label: "NEET Top Score", value: "680+", suffix: "MBBS Selections" },
-    { label: "Batch Size Limit", value: "30-40", suffix: "Direct Director Focus" }
-  ],
+  /* Unverified figures removed (alumni count, percentile, NEET score). Add only numbers the institute can document. */
+  stats: [],
   director: {
     name: "Mrs. Meghna Marchatwar",
     qualification: "M.Sc. in Biology, B.Ed., A.D.I.D.",
@@ -260,96 +255,27 @@ export const coursesList = [
   }
 ];
 
+/*
+ * Toppers as published on the live site (homepage and /topper-jee-neet-cet-12th-sci/, checked 12 Oct 2026).
+ * The previous list contained names, ranks and colleges that do not appear on the live site; it was removed.
+ * `image` stays null until the institute confirms which photo belongs to which student.
+ */
 export const toppersList = [
-  {
-    name: "Ruchi Ambatkar",
-    exam: "MHT-CET & 12th Board",
-    score: "99.42 %ile",
-    achievement: "State Top Ranker - Engineering",
-    category: "MHT-CET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/RUCHI-AMBATKAR-240x300.webp"
-  },
-  {
-    name: "Tanmay Deshmukh",
-    exam: "NEET Medical",
-    score: "675 / 720",
-    achievement: "Admitted to GMC Government Medical College",
-    category: "NEET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/19-240x300.webp"
-  },
-  {
-    name: "Aditya Raut",
-    exam: "JEE Advanced",
-    score: "AIR 2410",
-    achievement: "IIT Bombay Admitted",
-    category: "JEE",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/20-240x300.webp"
-  },
-  {
-    name: "Shreya Thakre",
-    exam: "MHT-CET PCB",
-    score: "99.18 %ile",
-    achievement: "Top Pharmacy College Allocation",
-    category: "MHT-CET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/21-240x300.webp"
-  },
-  {
-    name: "Pranav Joshi",
-    exam: "12th Sci Board",
-    score: "94.60 %",
-    achievement: "Distinction in Physics & Math",
-    category: "Board",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/22-240x300.webp"
-  },
-  {
-    name: "Srushti Kulkarni",
-    exam: "NEET Medical",
-    score: "662 / 720",
-    achievement: "MBBS Govt Medical Seat",
-    category: "NEET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/23-240x300.webp"
-  },
-  {
-    name: "Yash Meshram",
-    exam: "JEE Mains",
-    score: "99.25 %ile",
-    achievement: "VNIT Nagpur Computer Science",
-    category: "JEE",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/24-240x300.webp"
-  },
-  {
-    name: "Ananya Patil",
-    exam: "MHT-CET PCM",
-    score: "98.90 %ile",
-    achievement: "COEP Pune Admitted",
-    category: "MHT-CET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/99-240x300.webp"
-  }
+  { name: "Tejas Dhande", exam: "MHT-CET", score: "99.23 %ile", achievement: "Top MHT-CET score", category: "MHT-CET", image: null },
+  { name: "Akansh Baisware", exam: "MHT-CET", score: "95.52%", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Krishna Rathod", exam: "MHT-CET", score: "92.80", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Manswi Shende", exam: "MHT-CET", score: "92.7%", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Adit Kutemate", exam: "MHT-CET", score: "92.65", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Ruchi Ambatkar", exam: "JEE Advanced", score: "Qualified", achievement: "JEE Advanced", category: "JEE", image: null },
+  { name: "Sanskriti Akulwar", exam: "NEET", score: "MBBS", achievement: "Government Medical College", category: "NEET", image: null },
+  { name: "Kiran Hedao", exam: "NEET", score: "MBBS", achievement: "Government Medical College", category: "NEET", image: null },
+  { name: "AMSN Lonare", exam: "NEET", score: "MBBS", achievement: "Government Medical College", category: "NEET", image: null },
+  { name: "Swatesh Patil", exam: "Medical PG", score: "MS", achievement: "Medical postgraduate", category: "NEET", image: null },
+  { name: "Shubhada Gaykwad", exam: "HSC Board", score: "91", achievement: "HSC Chemistry", category: "Board", image: null },
 ];
 
-export const testimonialsList = [
-  {
-    name: "Dr. Rajesh Ambatkar",
-    relation: "Father of Ruchi Ambatkar (99.42 %ile)",
-    quote: "The Double Teaching concept at Century Science Institute made all the difference. My daughter never had to attend separate coaching for boards and competitive exams. Meghna Ma'am and the team provided unwavering personal support.",
-    rating: 5,
-    exam: "MHT-CET Topper"
-  },
-  {
-    name: "Tanmay Deshmukh",
-    relation: "NEET 675/720 - GMC Nagpur",
-    quote: "The biology notes and line-by-line NCERT decoding by Meghna Ma'am gave me the confidence to score 355/360 in Biology alone. The weekly mock tests made the final exam feel just like another practice session.",
-    rating: 5,
-    exam: "NEET 2024"
-  },
-  {
-    name: "Sanjay Joshi",
-    relation: "Parent of Pranav Joshi (94.6% 12th Board)",
-    quote: "Small batch size of 35 students ensured my son was never lost in the crowd unlike mega coaching factories. The regular parent-teacher reviews kept us updated throughout the 2 years.",
-    rating: 5,
-    exam: "12th Science Board"
-  }
-];
+/* Testimonials removed: the previous entries were not real quotes. Add genuine, consented testimonials here. */
+export const testimonialsList = [];
 
 export const campusFeatures = [
   {

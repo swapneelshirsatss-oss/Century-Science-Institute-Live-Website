@@ -19,7 +19,7 @@ export default function ContactPage() {
         { label: "Contact Us", href: "/contact/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
             <MapPin className="w-3.5 h-3.5" />
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 <span className="text-xs font-bold text-blue-700 uppercase tracking-widest">
                   Direct Contact Information
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b1e3d]">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F]">
                   Century Science Institute Center
                 </h2>
                 <p className="text-sm text-slate-600 leading-relaxed">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                 </a>
                 <Link
                   href="/admission-form/"
-                  className="px-6 py-3.5 rounded-xl bg-[#0b1e3d] hover:bg-blue-900 text-white font-bold text-sm transition"
+                  className="px-6 py-3.5 rounded-xl bg-[#16303F] hover:bg-blue-900 text-white font-bold text-sm transition"
                 >
                   Online Admission Form
                 </Link>

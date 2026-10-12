@@ -20,7 +20,7 @@ export default function ToppersPage() {
         { label: "Toppers & Results", href: "/topper-jee-neet-cet-12th-sci/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto space-y-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
             <Trophy className="w-3.5 h-3.5 text-amber-400" />
@@ -40,7 +40,7 @@ export default function ToppersPage() {
           <TopperGrid showFilter={true} />
 
           <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200 text-center space-y-4 max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold text-[#0b1e3d]">
+            <h3 className="text-xl font-bold text-[#16303F]">
               Want to be in next year&apos;s Hall of Fame?
             </h3>
             <p className="text-sm text-slate-600">

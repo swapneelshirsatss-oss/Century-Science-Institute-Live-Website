@@ -32,7 +32,7 @@ export default function MhtCetTestSeriesPage() {
         { label: "Test Series", href: "/mht-cet-test-series/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-5">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
@@ -67,7 +67,7 @@ export default function MhtCetTestSeriesPage() {
 
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b1e3d]">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F]">
             Turn Preparation into High Exam Percentile with Rigorous Mock Drills
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">

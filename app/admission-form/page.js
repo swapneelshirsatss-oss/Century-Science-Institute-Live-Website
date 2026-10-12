@@ -22,18 +22,38 @@ export default function AdmissionFormPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [error, setError] = useState("");
+
+  // Map this form's fields to the enquiry API and only show success when delivery is confirmed.
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setError("");
     try {
-      await fetch("/api/inquiry/", {
+      const res = await fetch("/api/inquiry/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.studentName,
+          phone: formData.phone,
+          course: formData.targetExam,
+          studentClass: formData.currentClass,
+          message: [
+            formData.parentName && `Parent: ${formData.parentName}`,
+            formData.email && `Email: ${formData.email}`,
+            formData.currentSchool && `School: ${formData.currentSchool}`,
+            `Board: ${formData.board}`,
+            `Hostel needed: ${formData.residentialRequired}`,
+            formData.address && `Address: ${formData.address}`,
+          ].filter(Boolean).join(" | "),
+          page: "/admission-form/",
+        }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.message || "We couldn't send your form online.");
       setSubmitted(true);
     } catch (err) {
-      setSubmitted(true);
+      setError(`${err.message} Please call or WhatsApp us on 94224 75665.`);
     } finally {
       setSubmitting(false);
     }
@@ -46,7 +66,7 @@ export default function AdmissionFormPage() {
         { label: "Admission Form", href: "/admission-form/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
             <GraduationCap className="w-3.5 h-3.5" />
@@ -95,7 +115,7 @@ export default function AdmissionFormPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="border-b border-slate-100 pb-4">
-                  <h3 className="text-lg font-bold text-[#0b1e3d]">Student & Academic Information</h3>
+                  <h3 className="text-lg font-bold text-[#16303F]">Student & Academic Information</h3>
                   <p className="text-xs text-slate-500">Please provide accurate contact details for batch scheduling.</p>
                 </div>
 
@@ -223,7 +243,8 @@ export default function AdmissionFormPage() {
                 </div>
 
                 <div className="pt-2">
-                  <button
+                  {error && (<p role="alert" className="text-sm font-semibold text-red-700 bg-red-50 border-l-4 border-red-600 px-4 py-3">{error}</p>)}
+                <button
                     type="submit"
                     disabled={submitting}
                     className="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
