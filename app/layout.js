@@ -50,9 +50,11 @@ export const metadata = {
     images: [{ url: "/brand/csi-logo.png", width: 499, height: 436, alt: "Century Science Institute Nagpur logo" }],
   },
   twitter: { card: "summary_large_image", creator: "@institute_csi" },
-  robots: {
-    googleBot: { "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
-  },
+  // NOINDEX=1 on preview/temporary domains keeps them out of search results (see app/robots.js).
+  robots:
+    process.env.NOINDEX === "1" || process.env.NOINDEX === "true"
+      ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+      : { googleBot: { "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
 export const viewport = {
