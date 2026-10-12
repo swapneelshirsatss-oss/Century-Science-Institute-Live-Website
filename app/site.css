@@ -378,3 +378,84 @@ body.site {
 .tc-key { display: inline-flex; align-items: center; gap: 6px; }
 .tc-key .tc-c { width: 11px; height: 11px; display: inline-block; }
 .tc-key .tc-c + * { margin-right: 6px; }
+
+/* =====================================================================
+   Colour grade (finishing pass, technique borrowed from github.com):
+   soft radial light behind the hero, gradient type on one line,
+   glowing hairlines between dark sections, lit buttons.
+   Brand colours only: teal, cobalt and gold on Midnight. Delete this
+   block to return to the flat version.
+   ===================================================================== */
+:root {
+  --glow-teal: rgba(10, 127, 142, .55);
+  --glow-cobalt: rgba(37, 99, 235, .28);
+  --glow-gold: rgba(248, 202, 21, .16);
+  --beam: linear-gradient(90deg, transparent 0%, rgba(63,182,195,.0) 8%, #3FB6C3 35%, #F8CA15 65%, rgba(248,202,21,0) 92%, transparent 100%);
+}
+
+/* Hero: light comes from behind the atom, fades to night at the bottom */
+.x-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(52% 62% at 78% 44%, var(--glow-teal) 0%, transparent 70%),
+    radial-gradient(40% 50% at 8% 0%, var(--glow-cobalt) 0%, transparent 72%),
+    radial-gradient(30% 40% at 96% 100%, var(--glow-gold) 0%, transparent 70%),
+    linear-gradient(180deg, #0B1820 0%, var(--night) 55%, #0B1820 100%);
+}
+@media (max-width: 760px) {
+  .x-hero::before { background:
+    radial-gradient(90% 45% at 85% 22%, var(--glow-teal) 0%, transparent 70%),
+    radial-gradient(70% 40% at 0% 0%, var(--glow-cobalt) 0%, transparent 72%),
+    linear-gradient(180deg, #0B1820 0%, var(--night) 60%); }
+}
+
+/* Gradient type on the payoff line only: stays in warm gold (gold-to-teal turns olive). Solid gold where unsupported. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .x-hero h1 span:nth-child(3) {
+    width: fit-content;
+    background: linear-gradient(100deg, #FFE68A 0%, #F8CA15 40%, #F8CA15 62%, #F5A70B 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    padding-bottom: .04em; /* keep descenders inside the clip */
+  }
+}
+
+/* Header: a faint beam instead of a grey rule */
+.x-header { border-bottom-color: transparent; }
+.x-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--beam); opacity: .45; pointer-events: none; }
+
+/* Gold button: lit from above, soft glow on hover */
+.x-btn-gold {
+  background: linear-gradient(180deg, #FFDC4F 0%, #F8CA15 55%, #EDBC0B 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 10px 28px -12px rgba(248,202,21,.75);
+  transition: box-shadow .25s, transform .12s, filter .2s;
+}
+.x-btn-gold:hover { background: linear-gradient(180deg, #FFE36E 0%, #FFD93F 55%, #F8CA15 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 14px 36px -10px rgba(248,202,21,.9); }
+.x-btn-line { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background: rgba(248,250,252,.04); }
+
+/* Results board: graded slate with a lit top edge */
+.x-board { position: relative; background:
+  radial-gradient(70% 90% at 0% 0%, rgba(10,127,142,.35) 0%, transparent 60%),
+  linear-gradient(135deg, #1A3A4C 0%, var(--slate) 45%, #112733 100%); }
+.x-board::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--beam); z-index: 1; }
+
+/* Double Teaching band: slate into night, glow top-left, beam on the seam */
+.x-dt { position: relative; isolation: isolate; background:
+  radial-gradient(45% 55% at 0% 0%, rgba(10,127,142,.30) 0%, transparent 70%),
+  radial-gradient(35% 45% at 100% 100%, rgba(37,99,235,.18) 0%, transparent 70%),
+  linear-gradient(180deg, var(--slate) 0%, #122835 60%, var(--night) 100%); }
+.x-dt::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--beam); opacity: .8; }
+
+/* Visit band: gold graded, not flat */
+.x-visit { background:
+  radial-gradient(60% 120% at 100% 0%, rgba(255,255,255,.35) 0%, transparent 60%),
+  linear-gradient(120deg, #FFD93F 0%, #F8CA15 50%, #EDBC0B 100%); }
+
+/* Footer: rises out of a teal glow under a beam */
+.x-footer { position: relative; background:
+  radial-gradient(60% 70% at 50% 0%, rgba(10,127,142,.22) 0%, transparent 70%),
+  linear-gradient(180deg, var(--night) 0%, #0B1820 100%); }
+.x-footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--beam); opacity: .7; }
+
+/* Course pages (GitHub layout): a beam under the page header */
+.gh-head { position: relative; }
+.gh-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--beam); opacity: .6; }
