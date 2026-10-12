@@ -14,8 +14,9 @@ import DoubleTeachingSection from "@/components/DoubleTeachingSection";
 import { instituteInfo, campusFeatures } from "@/data/instituteData";
 
 export const metadata = {
-  title: "About Century Science Institute Nagpur – History & Leadership",
-  description: "Learn about Century Science Institute Nagpur. 15+ years of entrance excellence, led by Director Mrs. Meghna Marchatwar, featuring the Double Teaching Concept.",
+  /* Title and description restored to the live page's wording (SEO continuity). */
+  title: "About Century Science Institute – Nagpur's Trusted Coaching",
+  description: "Discover why CSI is Nagpur's most trusted institute for JEE, NEET & CET. Proven results & experienced faculty.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/toppers-jee-neet-mht-cet/"
   }
@@ -29,7 +30,7 @@ export default function AboutUsPage() {
         { label: "About Us", href: "/toppers-jee-neet-mht-cet/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
             <Building2 className="w-3.5 h-3.5" />
@@ -72,7 +73,7 @@ export default function AboutUsPage() {
                 <span className="text-xs font-bold text-blue-700 uppercase tracking-widest">
                   Our Educational Philosophy
                 </span>
-                <h2 className="text-3xl font-extrabold text-[#0b1e3d]">
+                <h2 className="text-3xl font-extrabold text-[#16303F]">
                   Directors are Tutors: True Mentorship Over Commercial Scale
                 </h2>
               </div>

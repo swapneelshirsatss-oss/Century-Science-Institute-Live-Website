@@ -27,7 +27,7 @@ export default function NavalAcademyPage() {
         { label: "Naval Academy Prep", href: "/naval-academy-exam-preparation/" }
       ]} />
 
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-5">
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -58,7 +58,7 @@ export default function NavalAcademyPage() {
 
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b1e3d]">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F]">
             Strategic Training for Commissioned Officer Selection
           </h2>
           <p className="text-slate-600 leading-relaxed">

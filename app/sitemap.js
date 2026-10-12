@@ -1,103 +1,39 @@
-export default function sitemap() {
-  const baseUrl = "https://centuryscienceinstitute.in";
-  const now = new Date();
+/*
+ * Every indexable URL, matching the live site's paths exactly (trailing slash included).
+ * lastModified is a fixed date per page, so search engines are not told every page
+ * changed on every deploy. Update the date when a page's content actually changes.
+ */
+const BASE = "https://centuryscienceinstitute.in";
+const LAUNCH = "2026-10-12";
 
-  return [
-    {
-      url: `${baseUrl}/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/jee-coaching/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/neet-coaching/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/mht-cet-coaching/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/11-12-th-science-coaching/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/mht-cet-crash-course/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/mht-cet-test-series/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/jee-neet-cet-residential-course/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/national-defence-academy-exam-preparation-2-years-residential-course/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/naval-academy-exam-preparation/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/topper-jee-neet-cet-12th-sci/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/toppers-jee-neet-mht-cet/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/admission-form/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/contact/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/gallery/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-  ];
+const pages = [
+  ["/", 1.0, "weekly"],
+  ["/jee-coaching/", 0.9, "monthly"],
+  ["/neet-coaching/", 0.9, "monthly"],
+  ["/mht-cet-coaching/", 0.9, "monthly"],
+  ["/11-12-th-science-coaching/", 0.9, "monthly"],
+  ["/coaching/", 0.8, "monthly"],
+  ["/mht-cet-crash-course/", 0.8, "monthly"],
+  ["/mht-cet-test-series/", 0.8, "monthly"],
+  ["/10th-std-test-series/", 0.7, "monthly"],
+  ["/jee-neet-cet-residential-course/", 0.8, "monthly"],
+  ["/national-defence-academy-exam-preparation-2-years-residential-course/", 0.7, "monthly"],
+  ["/naval-academy-exam-preparation/", 0.7, "monthly"],
+  ["/topper-jee-neet-cet-12th-sci/", 0.8, "monthly"],
+  ["/toppers-jee-neet-mht-cet/", 0.7, "monthly"],
+  ["/admission-form/", 0.7, "monthly"],
+  ["/contact/", 0.7, "monthly"],
+  ["/gallery/", 0.5, "monthly"],
+  ["/blog/", 0.6, "weekly"],
+  ["/jee-main-2026-registration-updates/", 0.6, "monthly"],
+  ["/mht-cet-coaching-classes-in-nagpur-crack-cet-2025-with-csi/", 0.6, "monthly"],
+];
+
+export default function sitemap() {
+  return pages.map(([path, priority, changeFrequency]) => ({
+    url: `${BASE}${path}`,
+    lastModified: new Date(LAUNCH),
+    changeFrequency,
+    priority,
+  }));
 }

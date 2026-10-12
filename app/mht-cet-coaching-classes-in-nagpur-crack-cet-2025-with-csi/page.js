@@ -26,7 +26,7 @@ export default function CetBlogPage() {
             <span className="text-xs font-bold text-amber-700 uppercase tracking-widest">
               State Entrance Strategy
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0b1e3d] leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#16303F] leading-tight">
               MHT-CET Coaching Classes in Nagpur: Crack CET with Century Science Institute
             </h1>
             <div className="flex items-center gap-4 text-xs text-slate-500 font-semibold border-b border-slate-200 pb-4">

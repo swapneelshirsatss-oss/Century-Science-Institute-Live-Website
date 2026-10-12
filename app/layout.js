@@ -1,60 +1,62 @@
+import localFont from "next/font/local";
 import "./globals.css";
+import "./site.css";
 import ClientLayout from "./ClientLayout";
 
+/* Fonts are self-hosted (no runtime call to Google Fonts): faster first paint, no layout shift. */
+const display = localFont({
+  src: [
+    { path: "./fonts/big-shoulders-display-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "./fonts/big-shoulders-display-latin-900-normal.woff2", weight: "900", style: "normal" },
+  ],
+  variable: "--font-display",
+  display: "swap",
+  adjustFontFallback: "Arial",
+});
+
+const body = localFont({
+  src: [
+    { path: "./fonts/hanken-grotesk-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/hanken-grotesk-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/hanken-grotesk-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/hanken-grotesk-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const SITE = "https://centuryscienceinstitute.in";
+
+/*
+ * Root metadata.
+ * - No title template: every page already carries its full, live-site title
+ *   ("Best JEE Coaching in Nagpur – Century Science Institute"), so a template doubled the brand.
+ * - No canonical here: a root canonical is inherited by every page that forgets its own,
+ *   which pointed /admission-form/ and all 404s at the homepage. Each page sets its own.
+ */
 export const metadata = {
-  metadataBase: new URL("https://centuryscienceinstitute.in"),
-  title: {
-    default: "Century Science Institute – Top NEET, JEE & MHT-CET Coaching in Nagpur",
-    template: "%s – Century Science Institute"
-  },
-  description: "Century Science Institute offers expert NEET, JEE, and MHT-CET coaching in Nagpur. Experienced faculty, test series & personalized guidance.",
+  metadataBase: new URL(SITE),
+  title: "Century Science Institute – Top NEET, JEE & MHT-CET Coaching in Nagpur",
+  description:
+    "Top-rated coaching for JEE, NEET & CET in Nagpur. Expert faculty, proven results & personalized learning. Enroll today.",
+  applicationName: "Century Science Institute",
   authors: [{ name: "Century Science Institute" }],
   creator: "Century Science Institute",
   publisher: "Century Science Institute",
-  keywords: [
-    "NEET Coaching in Nagpur",
-    "JEE Coaching in Nagpur",
-    "MHT-CET Coaching in Nagpur",
-    "11th 12th Science Classes Nagpur",
-    "Best Coaching Classes Hudkeshwar Road Nagpur",
-    "Century Science Institute"
-  ],
-  alternates: {
-    canonical: "https://centuryscienceinstitute.in/"
-  },
   openGraph: {
-    title: "Century Science Institute – Top NEET, JEE & MHT-CET Coaching in Nagpur",
-    description: "Century Science Institute offers expert NEET, JEE, and MHT-CET coaching in Nagpur. Experienced faculty, test series & personalized guidance.",
-    url: "https://centuryscienceinstitute.in/",
     siteName: "Century Science Institute",
     locale: "en_IN",
     type: "website",
-    images: [
-      {
-        url: "https://centuryscienceinstitute.in/wp-content/uploads/2025/08/cropped-Century-LOGO-NO-BG-WEB.webp",
-        width: 1078,
-        height: 975,
-        alt: "Century Science Institute Nagpur Logo"
-      }
-    ]
+    images: [{ url: "/brand/csi-logo.png", width: 499, height: 436, alt: "Century Science Institute Nagpur logo" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Century Science Institute – Top NEET, JEE & MHT-CET Coaching in Nagpur",
-    description: "Century Science Institute offers expert NEET, JEE, and MHT-CET coaching in Nagpur.",
-    creator: "@institute_csi"
-  },
+  twitter: { card: "summary_large_image", creator: "@institute_csi" },
   robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1
-    }
-  }
+    googleBot: { "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
+  },
+};
+
+export const viewport = {
+  themeColor: "#0E1D27",
 };
 
 const rootOrganizationSchema = {
@@ -62,64 +64,69 @@ const rootOrganizationSchema = {
   "@graph": [
     {
       "@type": "Place",
-      "@id": "https://centuryscienceinstitute.in/#place",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "21.10956917",
-        "longitude": "79.11702919"
-      },
-      "hasMap": "https://www.google.com/maps/search/?api=1&query=21.10956917,79.11702919",
-      "address": {
+      "@id": `${SITE}/#place`,
+      geo: { "@type": "GeoCoordinates", latitude: "21.10956917", longitude: "79.11702919" },
+      hasMap: "https://www.google.com/maps/search/?api=1&query=21.10956917,79.11702919",
+      address: {
         "@type": "PostalAddress",
-        "streetAddress": "124, Rukhmini Nagar, Ashirwad Nagar Square,",
-        "addressLocality": "Near Hanuman Mandir, Hudkeshwar Road, Nagpur",
-        "addressRegion": "Maharashtra",
-        "postalCode": "440034",
-        "addressCountry": "+91"
-      }
+        streetAddress: "124, Rukhmini Nagar, Ashirwad Nagar Square, Near Hanuman Mandir, Hudkeshwar Road",
+        addressLocality: "Nagpur",
+        addressRegion: "Maharashtra",
+        postalCode: "440034",
+        addressCountry: "IN",
+      },
     },
     {
-      "@type": ["EducationalOrganization", "Organization"],
-      "@id": "https://centuryscienceinstitute.in/#organization",
-      "name": "Century Science Institute - Best NEET JEE Mht-cet Coaching Classes in Nagpur",
-      "url": "https://centuryscienceinstitute.in",
-      "sameAs": [
+      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@id": `${SITE}/#organization`,
+      name: "Century Science Institute",
+      alternateName: "CSI Nagpur",
+      description: "JEE, NEET and MHT-CET coaching in Nagpur with Double Teaching: board syllabus and entrance preparation every day.",
+      url: SITE,
+      logo: `${SITE}/brand/csi-logo.png`,
+      image: `${SITE}/brand/csi-logo.png`,
+      email: "info@centuryscienceinstitute.in",
+      telephone: "+91-9422475665",
+      priceRange: "₹₹",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "124, Rukhmini Nagar, Ashirwad Nagar Square, Near Hanuman Mandir, Hudkeshwar Road",
+        addressLocality: "Nagpur",
+        addressRegion: "Maharashtra",
+        postalCode: "440034",
+        addressCountry: "IN",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: 21.10956917, longitude: 79.11702919 },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "08:00",
+          closes: "20:30",
+        },
+      ],
+      location: { "@id": `${SITE}/#place` },
+      sameAs: [
         "https://www.facebook.com/CenturyScienceinstitutenagpur",
-        "https://twitter.com/https://x.com/institute_csi",
+        "https://x.com/institute_csi",
         "https://www.instagram.com/century_science_institute",
         "https://www.youtube.com/@csi_JEE_NEET_classes_nagpur",
         "https://in.pinterest.com/csiinstitute21",
-        "https://www.linkedin.com/company/century-science-institute-neet-jee-mht-cet-classes-in-nagpur"
+        "https://www.linkedin.com/company/century-science-institute-neet-jee-mht-cet-classes-in-nagpur",
       ],
-      "email": "info@centuryscienceinstitute.in",
-      "telephone": "+91 9422475665",
-      "priceRange": "₹₹",
-      "location": {
-        "@id": "https://centuryscienceinstitute.in/#place"
-      }
-    }
-  ]
+    },
+  ],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" 
-          rel="stylesheet" 
-        />
+    <html lang="en-IN" className={`${display.variable} ${body.variable}`}>
+      <body className="site">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootOrganizationSchema) }}
         />
-      </head>
-      <body className="antialiased bg-slate-50 text-slate-900 selection:bg-amber-400 selection:text-slate-950 font-['Plus_Jakarta_Sans',sans-serif]">
-        <ClientLayout>
-          {children}
-        </ClientLayout>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

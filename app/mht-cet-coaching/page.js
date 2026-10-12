@@ -71,7 +71,7 @@ export default function MhtCetCoachingPage() {
       ]} />
 
       {/* Hero Header */}
-      <section className="bg-gradient-to-b from-[#0b1e3d] via-[#091832] to-[#061224] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-b from-[#16303F] via-[#0E1D27] to-[#0E1D27] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-5">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20">
@@ -110,7 +110,7 @@ export default function MhtCetCoachingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2 space-y-8">
               <div className="space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b1e3d]">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F]">
                   Master the Maharashtra CET Exam with Proven Methodology
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
@@ -189,7 +189,7 @@ export default function MhtCetCoachingPage() {
       <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-2 mb-10">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b1e3d]">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F]">
               Our MHT-CET State Top Rankers
             </h2>
           </div>

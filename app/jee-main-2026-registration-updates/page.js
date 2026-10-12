@@ -26,7 +26,7 @@ export default function JeeBlogPage() {
             <span className="text-xs font-bold text-blue-700 uppercase tracking-widest">
               Engineering Exam Strategy
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0b1e3d] leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#16303F] leading-tight">
               JEE Main Registration Updates & High-Yield Preparation Strategy
             </h1>
             <div className="flex items-center gap-4 text-xs text-slate-500 font-semibold border-b border-slate-200 pb-4">
@@ -73,7 +73,7 @@ export default function JeeBlogPage() {
             </div>
             <Link
               href="/admission-form/"
-              className="px-6 py-3 rounded-xl bg-[#0b1e3d] text-amber-400 font-bold text-xs hover:bg-blue-900 transition shrink-0"
+              className="px-6 py-3 rounded-xl bg-[#16303F] text-amber-400 font-bold text-xs hover:bg-blue-900 transition shrink-0"
             >
               Book Free Counselling →
             </Link>
