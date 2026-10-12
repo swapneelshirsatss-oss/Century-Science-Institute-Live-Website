@@ -559,3 +559,29 @@ body.site {
   .x-atom, .x-score.is-landed, .tc .tc-c { animation: none !important; }
   .x-tp:hover { transform: none; }
 }
+
+/* =====================================================================
+   Background texture: graph paper, like a physics notebook.
+   One continuous layer behind the whole page (so no seams between
+   sections). Dark and gold sections paint over it. Strongest at the
+   page edges, fading out in the middle where text and photos sit.
+   Static: no per-frame cost on phones.
+   ===================================================================== */
+main#main { position: relative; isolation: isolate; }
+main#main::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(10,115,128,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,115,128,.11) 1px, transparent 1px),
+    linear-gradient(rgba(10,115,128,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,115,128,.055) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.55) 18%, rgba(0,0,0,.12) 38%, rgba(0,0,0,.12) 62%, rgba(0,0,0,.55) 82%, #000 100%);
+          mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.55) 18%, rgba(0,0,0,.12) 38%, rgba(0,0,0,.12) 62%, rgba(0,0,0,.55) 82%, #000 100%);
+}
+@media (max-width: 760px) {
+  main#main::before { background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+    -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.25) 50%, rgba(0,0,0,.7));
+            mask-image: linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.25) 50%, rgba(0,0,0,.7)); }
+}
