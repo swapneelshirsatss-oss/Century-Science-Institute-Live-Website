@@ -8,6 +8,7 @@ import Ticker from "@/components/site/Ticker";
 import VideoRail from "@/components/site/VideoRail";
 import { contact, courses, director, featuredTopper, tickerItems, toppers, videos, youtubeChannel } from "@/data/site";
 import { photos } from "@/data/photos";
+import { DEFAULT_OG_IMAGE, JsonLd, SITE } from "@/lib/schema";
 
 /* Title and description kept from the live homepage (SEO continuity). */
 export const metadata = {
@@ -19,6 +20,7 @@ export const metadata = {
     title: "Century Science Institute – Top NEET, JEE & MHT-CET Coaching in Nagpur",
     description: "Top-rated coaching for JEE, NEET & CET in Nagpur. Expert faculty, proven results & personalized learning.",
     url: "/",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -32,9 +34,41 @@ function wave(amp, mid = 60, period = 200, width = 2400, step = 10) {
   return "M" + pts.join(" L");
 }
 
+const homePageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE}/#webpage`,
+      url: `${SITE}/`,
+      name: "Century Science Institute – Top NEET, JEE & MHT-CET Coaching in Nagpur",
+      description:
+        "Top-rated coaching for JEE, NEET & CET in Nagpur. Expert faculty, proven results & personalized learning. Enroll today.",
+      isPartOf: { "@id": `${SITE}/#website` },
+      about: { "@id": `${SITE}/#organization` },
+      inLanguage: "en-IN",
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["#hero-title", "#direct-answer-summary"],
+      },
+    },
+    ...videos.map((v) => ({
+      "@type": "VideoObject",
+      name: v.title,
+      description: `${v.title} — Century Science Institute, Hudkeshwar Road, Nagpur.`,
+      thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,
+      embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+      contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+      uploadDate: "2025-10-01T00:00:00+05:30",
+      publisher: { "@id": `${SITE}/#organization` },
+    })),
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={homePageSchema} />
       {/* ================= HERO ================= */}
       <section className="x-hero" aria-labelledby="hero-title">
         {HERO_PHOTO && (
@@ -50,7 +84,7 @@ export default function HomePage() {
               <span>Two exams.</span>
               <span>One coaching.</span>
             </h1>
-            <p className="x-lead">
+            <p id="direct-answer-summary" className="x-lead">
               Board exam in the first hour. JEE, NEET or MHT-CET in the second. Same teacher, same topic, every day.
             </p>
             <div className="x-ctas">
@@ -73,12 +107,23 @@ export default function HomePage() {
               <p className="x-score-l">{featuredTopper.label}</p>
               <p className="x-score-n">{featuredTopper.name}</p>
             </div>
-            <PhotoSlot src={featuredTopper.photo} alt={featuredTopper.name} label="Topper portrait, 4:5" note={featuredTopper.name} />
+            <PhotoSlot
+              src={featuredTopper.photo}
+              alt={`${featuredTopper.name} – ${featuredTopper.score} ${featuredTopper.label} at Century Science Institute Nagpur`}
+              label="Topper portrait, 4:5"
+              note={featuredTopper.name}
+            />
           </div>
           <div className="x-wall">
             {toppers.map((t) => (
               <div className="x-tp" key={t.name}>
-                <PhotoSlot src={t.photo} alt={t.name} label="Photo, 1:1" note={t.name} sizes="(max-width: 860px) 50vw, 25vw" />
+                <PhotoSlot
+                  src={t.photo}
+                  alt={`${t.name} – ${t.result} ${t.exam} topper at Century Science Institute Nagpur`}
+                  label="Photo, 1:1"
+                  note={t.name}
+                  sizes="(max-width: 860px) 50vw, 25vw"
+                />
                 <p className="x-tp-r">{t.result}</p>
                 <p className="x-tp-n">{t.name}</p>
                 <p className="x-tp-e">{t.exam}</p>
@@ -133,7 +178,12 @@ export default function HomePage() {
       {/* ================= DIRECTOR ================= */}
       <section className="x-sec" aria-labelledby="dir-title">
         <div className="x-wrap x-dir">
-          <PhotoSlot src={director.photo} alt={director.name} label="Director portrait, 4:5" note={director.name} />
+          <PhotoSlot
+            src={director.photo}
+            alt="Mrs. Meghana Marchatwar, Director and NEET Biology Faculty at Century Science Institute, Nagpur"
+            label="Director portrait, 4:5"
+            note={director.name}
+          />
           <div>
             <h2 id="dir-title" className="x-big x-h2" style={{ marginTop: 0 }}>The directors take the class.</h2>
             <p className="x-sub">

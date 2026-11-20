@@ -1,9 +1,17 @@
 import DocPage, { FaqBlock } from "@/components/site/DocPage";
+import { buildCourseSchema, DEFAULT_OG_IMAGE } from "@/lib/schema";
+
 export const metadata = {
   title: "Naval Academy Exam Preparation in Nagpur – Century Science Institute",
   description: "Expert Naval Academy exam coaching in Nagpur with disciplined training, JEE score enhancement, and SSB interview guidance.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/naval-academy-exam-preparation/"
+  },
+  openGraph: {
+    title: "Naval Academy Exam Preparation in Nagpur – Century Science Institute",
+    description: "Specialized Indian Naval Academy 10+2 B.Tech Cadet Entry coaching in Nagpur with JEE Main score enhancement and SSB interview guidance.",
+    url: "https://centuryscienceinstitute.in/naval-academy-exam-preparation/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 
@@ -14,9 +22,16 @@ const faqs = [
   }
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "Naval Academy (10+2 B.Tech Cadet Entry) Preparation in Nagpur",
+  description: "Specialized coaching in Nagpur for Indian Naval Academy 10+2 B.Tech Cadet Entry Scheme focusing on Class 12 PCM, JEE Main cutoff and SSB interview.",
+  path: "/naval-academy-exam-preparation/",
+});
+
 export default function NavalAcademyPage() {
   return (
     <DocPage
+      schema={courseSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "Naval Academy Prep", href: "/naval-academy-exam-preparation/" }]}
       pill="Indian Naval Academy 10+2 Cadet Entry"
       title="Naval Academy (10+2 B.Tech Cadet Entry) Preparation"

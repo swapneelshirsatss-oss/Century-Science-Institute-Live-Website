@@ -1,4 +1,5 @@
 import DocPage, { FaqBlock, DoubleTeachingDoc } from "@/components/site/DocPage";
+import { buildCourseSchema, DEFAULT_OG_IMAGE } from "@/lib/schema";
 
 export const metadata = {
   title: "11th & 12th Science Coaching Classes in Nagpur",
@@ -9,7 +10,8 @@ export const metadata = {
   openGraph: {
     title: "11th & 12th Science Coaching Classes in Nagpur",
     description: "Join CSI Nagpur for 11th & 12th Science coaching for State Board / CBSE. Expert faculty and strong fundamentals.",
-    url: "https://centuryscienceinstitute.in/11-12-th-science-coaching/"
+    url: "https://centuryscienceinstitute.in/11-12-th-science-coaching/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 
@@ -35,9 +37,17 @@ const subjects = [
   ["Biology Diagrams & Theory", "High-scoring diagram labeling and descriptive answer presentation led by Meghana Ma'am."],
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "11th & 12th Science Coaching in Nagpur (State Board & CBSE)",
+  description:
+    "Class 11 and 12 Science coaching in Nagpur for Maharashtra State Board and CBSE covering Physics, Chemistry, Mathematics and Biology with Double Teaching.",
+  path: "/11-12-th-science-coaching/",
+});
+
 export default function Class1112CoachingPage() {
   return (
     <DocPage
+      schema={courseSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "11th & 12th Science Coaching", href: "/11-12-th-science-coaching/" }]}
       pill="Board & Concept Foundation"
       title="11th & 12th Science Coaching Classes in Nagpur"

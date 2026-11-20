@@ -2,8 +2,7 @@ import Link from "next/link";
 import CourseTabs from "@/components/site/CourseTabs";
 import DemoButton from "@/components/site/DemoButton";
 import { contact, courses } from "@/data/site";
-
-const SITE = "https://centuryscienceinstitute.in";
+import { JsonLd, SITE } from "@/lib/schema";
 
 /**
  * "Document" page in the same calm, GitHub-like structure as the course pages:
@@ -13,7 +12,7 @@ const SITE = "https://centuryscienceinstitute.in";
  * It renders the same BreadcrumbList JSON-LD the old Breadcrumbs component emitted, so the
  * structured data is unchanged. The page's own metadata and other JSON-LD stay in the page file.
  */
-export default function DocPage({ crumbs, title, lead, pill = "Admissions open 2027-28", sections = [], tabs = true, about, aboutTitle = "About", cta = true, side, children, headExtra }) {
+export default function DocPage({ crumbs, title, lead, pill = "Admissions open 2027-28", sections = [], tabs = true, about, aboutTitle = "About", cta = true, side, children, headExtra, schema }) {
   const crumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -28,7 +27,8 @@ export default function DocPage({ crumbs, title, lead, pill = "Admissions open 2
 
   return (
     <div className="gh">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbSchema) }} />
+      <JsonLd data={crumbSchema} />
+      {schema && <JsonLd data={schema} />}
 
       <header className="gh-head">
         <div className="x-wrap">
@@ -140,7 +140,7 @@ export function FaqBlock({ faqs }) {
   };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <Faq items={faqs.map((f) => [f.q, f.a])} />
     </>
   );

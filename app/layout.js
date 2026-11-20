@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./site.css";
 import ClientLayout from "./ClientLayout";
+import { JsonLd, SITE } from "@/lib/schema";
 
 /* Fonts are self-hosted (no runtime call to Google Fonts): faster first paint, no layout shift. */
 const display = localFont({
@@ -25,8 +26,6 @@ const body = localFont({
   display: "swap",
 });
 
-const SITE = "https://centuryscienceinstitute.in";
-
 /*
  * Root metadata.
  * - No title template: every page already carries its full, live-site title
@@ -47,14 +46,41 @@ export const metadata = {
     siteName: "Century Science Institute",
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/brand/csi-logo.png", width: 499, height: 436, alt: "Century Science Institute Nagpur logo" }],
+    images: [
+      {
+        url: "/photos/classroom.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Classroom session at Century Science Institute, Hudkeshwar Road, Nagpur",
+      },
+      {
+        url: "/brand/csi-logo.png",
+        width: 499,
+        height: 436,
+        alt: "Century Science Institute Nagpur logo",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image", creator: "@institute_csi" },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@institute_csi",
+    site: "@institute_csi",
+  },
   // NOINDEX=1 on preview/temporary domains keeps them out of search results (see app/robots.js).
   robots:
     process.env.NOINDEX === "1" || process.env.NOINDEX === "true"
       ? { index: false, follow: false, googleBot: { index: false, follow: false } }
-      : { googleBot: { "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
 };
 
 export const viewport = {
@@ -65,9 +91,30 @@ const rootOrganizationSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: "Century Science Institute",
+      alternateName: ["CSI Nagpur", "Century Science Institute Nagpur", "CSI Hudkeshwar Road"],
+      description: "JEE, NEET, MHT-CET and 11th–12th Science coaching in Nagpur with the Double Teaching Concept.",
+      publisher: { "@id": `${SITE}/#organization` },
+      inLanguage: "en-IN",
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE}/#director`,
+      name: "Mrs. Meghana Marchatwar",
+      jobTitle: "Director & Senior Biology Faculty",
+      description: "Director of Century Science Institute, Nagpur (M.Sc. Biology, B.Ed., A.D.I.D., 15+ years teaching experience).",
+      image: `${SITE}/photos/director-meghana-marchatwar.jpg`,
+      worksFor: { "@id": `${SITE}/#organization` },
+      knowsAbout: ["NEET Biology", "NCERT Biology", "MHT-CET PCB", "Class 11 & 12 Biology"],
+    },
+    {
       "@type": "Place",
       "@id": `${SITE}/#place`,
-      geo: { "@type": "GeoCoordinates", latitude: "21.10956917", longitude: "79.11702919" },
+      name: "Century Science Institute, Hudkeshwar Road, Nagpur",
+      geo: { "@type": "GeoCoordinates", latitude: 21.10956917, longitude: 79.11702919 },
       hasMap: "https://www.google.com/maps/search/?api=1&query=21.10956917,79.11702919",
       address: {
         "@type": "PostalAddress",
@@ -82,14 +129,27 @@ const rootOrganizationSchema = {
       "@type": ["EducationalOrganization", "LocalBusiness"],
       "@id": `${SITE}/#organization`,
       name: "Century Science Institute",
-      alternateName: "CSI Nagpur",
-      description: "JEE, NEET and MHT-CET coaching in Nagpur with Double Teaching: board syllabus and entrance preparation every day.",
-      url: SITE,
-      logo: `${SITE}/brand/csi-logo.png`,
-      image: `${SITE}/brand/csi-logo.png`,
+      alternateName: ["CSI Nagpur", "Century Science Institute Nagpur"],
+      description:
+        "JEE, NEET and MHT-CET coaching in Nagpur with Double Teaching: board syllabus and entrance preparation every day.",
+      url: `${SITE}/`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/brand/csi-logo.png`,
+        width: 499,
+        height: 436,
+      },
+      image: [
+        `${SITE}/photos/classroom.jpg`,
+        `${SITE}/photos/building.jpg`,
+        `${SITE}/brand/csi-logo.png`,
+      ],
       email: "info@centuryscienceinstitute.in",
       telephone: "+91-9422475665",
       priceRange: "₹₹",
+      currenciesAccepted: "INR",
+      founder: { "@id": `${SITE}/#director` },
+      hasMap: "https://www.google.com/maps/search/?api=1&query=21.10956917,79.11702919",
       address: {
         "@type": "PostalAddress",
         streetAddress: "124, Rukhmini Nagar, Ashirwad Nagar Square, Near Hanuman Mandir, Hudkeshwar Road",
@@ -99,6 +159,32 @@ const rootOrganizationSchema = {
         addressCountry: "IN",
       },
       geo: { "@type": "GeoCoordinates", latitude: 21.10956917, longitude: 79.11702919 },
+      areaServed: [
+        { "@type": "City", name: "Nagpur" },
+        { "@type": "Place", name: "Hudkeshwar Road, Nagpur" },
+        { "@type": "Place", name: "Ashirwad Nagar, Nagpur" },
+        { "@type": "Place", name: "Manewada, Nagpur" },
+        { "@type": "Place", name: "Besa-Pipla, Nagpur" },
+        { "@type": "Place", name: "Nandanvan, Nagpur" },
+        { "@type": "Place", name: "Sakkardara, Nagpur" },
+        { "@type": "AdministrativeArea", name: "Vidarbha, Maharashtra" },
+      ],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: "+91-9422475665",
+          contactType: "admissions",
+          areaServed: "IN",
+          availableLanguage: ["English", "Hindi", "Marathi"],
+        },
+        {
+          "@type": "ContactPoint",
+          telephone: "+91-9371922368",
+          contactType: "admissions",
+          areaServed: "IN",
+          availableLanguage: ["English", "Hindi", "Marathi"],
+        },
+      ],
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -123,11 +209,12 @@ const rootOrganizationSchema = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-IN" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="Century Science Institute LLM Knowledge Base" />
+        <link rel="llms" href="/llms.txt" />
+      </head>
       <body className="site">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootOrganizationSchema) }}
-        />
+        <JsonLd data={rootOrganizationSchema} />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PageHero from "@/components/site/PageHero";
 import DemoButton from "@/components/site/DemoButton";
+import { DEFAULT_OG_IMAGE, JsonLd, SITE } from "@/lib/schema";
 
 /* Live URL /coaching/ (top-nav hub on the WordPress site). Title kept from the live page. */
 export const metadata = {
@@ -12,6 +13,7 @@ export const metadata = {
     title: "Top Coaching Classes in Nagpur | NEET, JEE, CET & Science – CSI",
     description: "NEET, JEE and MHT-CET coaching in Nagpur with Double Teaching, small batches and weekly tests.",
     url: "/coaching/",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -48,11 +50,30 @@ const groups = [
   },
 ];
 
+const courseListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Coaching Courses at Century Science Institute, Nagpur",
+  url: `${SITE}/coaching/`,
+  itemListElement: groups.flatMap((g) => g.items).map((c, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    item: {
+      "@type": "Course",
+      name: c.name,
+      description: c.desc,
+      url: `${SITE}${c.href}`,
+      provider: { "@id": `${SITE}/#organization` },
+    },
+  })),
+};
+
 export default function CoachingPage() {
   return (
     <>
+      <JsonLd data={courseListSchema} />
       <PageHero
-        crumbs={[{ label: "Courses" }]}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Courses", href: "/coaching/" }]}
         eyebrow="Admissions open for 2027-28"
         title="Coaching classes in Nagpur"
         lead="Every course at Century Science Institute follows Double Teaching: one hour of board syllabus and one hour of entrance practice, every day, in batches of 30 to 40."

@@ -3,8 +3,7 @@ import CourseTabs from "@/components/site/CourseTabs";
 import DemoButton from "@/components/site/DemoButton";
 import { toppersList } from "@/data/instituteData";
 import { contact, courses } from "@/data/site";
-
-const SITE = "https://centuryscienceinstitute.in";
+import { JsonLd, SITE } from "@/lib/schema";
 
 /**
  * Course page in a calm, GitHub-like structure:
@@ -27,12 +26,13 @@ export default function CoursePage({ c }) {
     "@graph": [
       {
         "@type": "Course",
+        "@id": `${SITE}${c.path}#course`,
         name: c.schema.name,
         description: c.schema.description,
         url: `${SITE}${c.path}`,
-        provider: { "@type": "EducationalOrganization", name: "Century Science Institute", url: SITE },
-        offers: { "@type": "Offer", category: "Classroom coaching", availability: "https://schema.org/InStock" },
-        hasCourseInstance: { "@type": "CourseInstance", courseMode: "onsite", location: { "@type": "Place", name: "Century Science Institute, Hudkeshwar Road, Nagpur" } },
+        provider: { "@id": `${SITE}/#organization` },
+        offers: { "@type": "Offer", category: "Classroom coaching", availability: "https://schema.org/InStock", priceCurrency: "INR" },
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: "onsite", location: { "@id": `${SITE}/#place` } },
       },
       {
         "@type": "FAQPage",
@@ -51,7 +51,7 @@ export default function CoursePage({ c }) {
 
   return (
     <div className="gh">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
 
       <header className="gh-head">
         <div className="x-wrap">

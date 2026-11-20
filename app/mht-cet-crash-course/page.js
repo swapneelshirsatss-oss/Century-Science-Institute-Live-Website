@@ -1,9 +1,17 @@
 import DocPage, { FaqBlock } from "@/components/site/DocPage";
+import { buildCourseSchema, DEFAULT_OG_IMAGE } from "@/lib/schema";
+
 export const metadata = {
   title: "MHT-CET Crash Course in Nagpur – Century Science Institute",
   description: "Join our intensive MHT-CET Crash Course in Nagpur. Rapid syllabus revision in 6 to 8 weeks, weekly full-length mocks and shortcut techniques.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/mht-cet-crash-course/"
+  },
+  openGraph: {
+    title: "MHT-CET Crash Course in Nagpur – Century Science Institute",
+    description: "Rapid 6 to 8 week MHT-CET Crash Course in Nagpur for PCM & PCB with weekly full-length mocks and shortcut techniques.",
+    url: "https://centuryscienceinstitute.in/mht-cet-crash-course/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 
@@ -18,10 +26,17 @@ const faqs = [
   }
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "MHT-CET Crash Course in Nagpur (PCM & PCB)",
+  description: "Intensive 6 to 8 week MHT-CET Crash Course in Nagpur with rapid syllabus revision, formula shortcuts and weekly full-length mocks.",
+  path: "/mht-cet-crash-course/",
+});
+
 export default function MhtCetCrashCoursePage() {
   const points = ["Complete Syllabus Revision in 6 to 8 Weeks", "Weekly Full-Length Mock Tests in Exam Conditions", "Special Math Shortcut Techniques for 2-Minute Question Solving", "Line-by-Line Biology & Organic Chemistry Rapid Fire Drills", "Micro-Level Negative Mark Elimination Strategy", "Direct Mentorship by Senior Subject Faculty"];
   return (
     <DocPage
+      schema={courseSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "MHT-CET Coaching", href: "/mht-cet-coaching/" }, { label: "Crash Course", href: "/mht-cet-crash-course/" }]}
       pill="Intensive 6 to 8 week revision"
       title="MHT-CET Crash Course in Nagpur (PCM & PCB)"

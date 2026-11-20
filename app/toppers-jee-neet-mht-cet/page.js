@@ -3,6 +3,7 @@ import PageHero from "@/components/site/PageHero";
 import PhotoSlot from "@/components/site/PhotoSlot";
 import DemoButton from "@/components/site/DemoButton";
 import { director } from "@/data/site";
+import { JsonLd, SITE } from "@/lib/schema";
 
 export const metadata = {
   /* Title and description restored to the live page's wording (SEO continuity). */
@@ -10,7 +11,23 @@ export const metadata = {
   description: "Discover why CSI is Nagpur's most trusted institute for JEE, NEET & CET. Proven results & experienced faculty.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/toppers-jee-neet-mht-cet/"
+  },
+  openGraph: {
+    title: "About Century Science Institute – Nagpur's Trusted Coaching",
+    description: "Discover why CSI is Nagpur's most trusted institute for JEE, NEET & CET. Led by Director Mrs. Meghana Marchatwar with 15+ years teaching experience.",
+    url: "https://centuryscienceinstitute.in/toppers-jee-neet-mht-cet/",
+    images: [{ url: "/photos/director-meghana-marchatwar.jpg", alt: "Director Mrs. Meghana Marchatwar – Century Science Institute Nagpur" }],
   }
+};
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${SITE}/toppers-jee-neet-mht-cet/#aboutpage`,
+  url: `${SITE}/toppers-jee-neet-mht-cet/`,
+  name: "About Century Science Institute, Nagpur",
+  isPartOf: { "@id": `${SITE}/#website` },
+  mainEntity: { "@id": `${SITE}/#organization` },
 };
 
 const hours = [
@@ -29,6 +46,7 @@ const accountability = [
 export default function AboutUsPage() {
   return (
     <>
+      <JsonLd data={aboutPageSchema} />
       <PageHero
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us", href: "/toppers-jee-neet-mht-cet/" }]}
         eyebrow="15+ Years of Academic Excellence"

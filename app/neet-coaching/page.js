@@ -1,5 +1,6 @@
 import CoursePage from "@/components/site/CoursePage";
 import { courseData } from "@/data/courses";
+import { DEFAULT_OG_IMAGE } from "@/lib/schema";
 
 /* Metadata unchanged from the previous page (SEO continuity). */
 export const metadata = {
@@ -11,7 +12,8 @@ export const metadata = {
   openGraph: {
     title: "Best NEET Coaching in Nagpur – Century Science Institute",
     description: "Join CSI Nagpur for expert NEET coaching in Nagpur with daily tests, Double teaching, and experienced faculty.",
-    url: "https://centuryscienceinstitute.in/neet-coaching/"
+    url: "https://centuryscienceinstitute.in/neet-coaching/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 

@@ -1,6 +1,7 @@
 import PageHero from "@/components/site/PageHero";
 import DemoButton from "@/components/site/DemoButton";
 import { contact } from "@/data/site";
+import { buildCourseSchema, DEFAULT_OG_IMAGE, JsonLd } from "@/lib/schema";
 
 /* Live URL kept. Title kept from the live page; the description replaces the live 3-word placeholder. */
 export const metadata = {
@@ -12,6 +13,7 @@ export const metadata = {
     title: "10th Std Test Series - Century Science Institute",
     description: "Board-pattern tests for Class 10 in Nagpur with board-style checking and weekly scorecards.",
     url: "/10th-std-test-series/",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -24,11 +26,23 @@ const points = [
   { h: "Next step after Class 10", p: "Students can move straight into the 2-year integrated JEE, NEET or MHT-CET batch." },
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "10th Std Test Series (SSC & CBSE) in Nagpur",
+  description:
+    "Board-pattern chapter-wise and full-length test series for Class 10 SSC and CBSE students in Nagpur with board-style marking and weekly scorecards.",
+  path: "/10th-std-test-series/",
+});
+
 export default function TenthTestSeries() {
   return (
     <>
+      <JsonLd data={courseSchema} />
       <PageHero
-        crumbs={[{ label: "Courses", href: "/coaching/" }, { label: "10th Std test series" }]}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Courses", href: "/coaching/" },
+          { label: "10th Std test series", href: "/10th-std-test-series/" },
+        ]}
         eyebrow="SSC and CBSE pattern"
         title="10th Std test series"
         lead="Weekly board-pattern tests for Class 10 students on Hudkeshwar Road, Nagpur, checked the way board examiners mark."

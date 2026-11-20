@@ -1,10 +1,17 @@
 import DocPage, { FaqBlock } from "@/components/site/DocPage";
+import { buildCourseSchema, DEFAULT_OG_IMAGE } from "@/lib/schema";
 
 export const metadata = {
   title: "JEE / NEET / CET Residential Coaching in Nagpur – CSI",
   description: "2-year residential JEE, NEET and MHT-CET coaching in Nagpur: separate hostels for boys and girls, CCTV, 24x7 security and monitored self-study.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/jee-neet-cet-residential-course/"
+  },
+  openGraph: {
+    title: "JEE / NEET / CET Residential Coaching in Nagpur – CSI",
+    description: "2-year residential JEE, NEET and MHT-CET coaching in Nagpur with separate hostels for boys and girls, balanced meals, CCTV and monitored self-study.",
+    url: "https://centuryscienceinstitute.in/jee-neet-cet-residential-course/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 
@@ -27,9 +34,16 @@ const facilities = [
   ["Computer test lab", "Online mock tests in the institute's own computer lab."],
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "JEE, NEET & MHT-CET 2-Year Residential Course in Nagpur",
+  description: "2-year residential coaching in Nagpur for JEE, NEET and MHT-CET with separate hostels for boys and girls, balanced meals, CCTV and monitored self-study.",
+  path: "/jee-neet-cet-residential-course/",
+});
+
 export default function ResidentialCoachingPage() {
   return (
     <DocPage
+      schema={courseSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "Residential Course", href: "/jee-neet-cet-residential-course/" }]}
       pill="All-Inclusive Campus & Hostel Program"
       title="JEE, NEET & CET Residential Course in Nagpur"

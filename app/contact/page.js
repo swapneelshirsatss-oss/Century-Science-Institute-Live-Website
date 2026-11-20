@@ -1,13 +1,30 @@
 import Link from "next/link";
 import DocPage from "@/components/site/DocPage";
 import { instituteInfo } from "@/data/instituteData";
+import { DEFAULT_OG_IMAGE, SITE } from "@/lib/schema";
 
 export const metadata = {
   title: "Contact Century Science Institute – Hudkeshwar Road Nagpur",
   description: "Contact Century Science Institute Nagpur. Center address: 124, Rukhmini Nagar, Ashirwad Nagar Square, Hudkeshwar Road, Nagpur. Phone: +91 9422475665.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/contact/"
+  },
+  openGraph: {
+    title: "Contact Century Science Institute – Hudkeshwar Road Nagpur",
+    description: "Visit Century Science Institute at 124, Rukhmini Nagar, Ashirwad Nagar Square, Hudkeshwar Road, Nagpur. Call +91 94224 75665.",
+    url: "https://centuryscienceinstitute.in/contact/",
+    images: [DEFAULT_OG_IMAGE],
   }
+};
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${SITE}/contact/#contactpage`,
+  url: `${SITE}/contact/`,
+  name: "Contact Century Science Institute, Nagpur",
+  isPartOf: { "@id": `${SITE}/#website` },
+  mainEntity: { "@id": `${SITE}/#organization` },
 };
 
 const a = instituteInfo.address;
@@ -17,6 +34,7 @@ const wa = `https://wa.me/${c.whatsappNumber}?text=Hello%20Century%20Science%20I
 export default function ContactPage() {
   return (
     <DocPage
+      schema={contactPageSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "Contact Us", href: "/contact/" }]}
       pill="Nagpur Academic Center"
       title="Contact Century Science Institute"

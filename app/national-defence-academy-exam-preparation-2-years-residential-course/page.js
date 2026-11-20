@@ -1,9 +1,17 @@
 import DocPage, { FaqBlock } from "@/components/site/DocPage";
+import { buildCourseSchema, DEFAULT_OG_IMAGE } from "@/lib/schema";
+
 export const metadata = {
   title: "NDA Exam Preparation 2-Year Residential Course in Nagpur – CSI",
   description: "Comprehensive 2-Year NDA Residential Course in Nagpur with integrated 11th-12th Science, physical drills, SSB mentoring & mock tests.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/national-defence-academy-exam-preparation-2-years-residential-course/"
+  },
+  openGraph: {
+    title: "NDA Exam Preparation 2-Year Residential Course in Nagpur – CSI",
+    description: "2-year NDA Residential Course in Nagpur combining Class 11–12 Science boards with UPSC NDA written prep, physical conditioning and SSB mentoring.",
+    url: "https://centuryscienceinstitute.in/national-defence-academy-exam-preparation-2-years-residential-course/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 
@@ -18,9 +26,16 @@ const faqs = [
   }
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "National Defence Academy (NDA) 2-Year Residential Course in Nagpur",
+  description: "Integrated 11th & 12th Science residential course in Nagpur with UPSC NDA written exam preparation, physical drills and SSB guidance.",
+  path: "/national-defence-academy-exam-preparation-2-years-residential-course/",
+});
+
 export default function NdaResidentialPage() {
   return (
     <DocPage
+      schema={courseSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "NDA 2-Year Residential", href: "/national-defence-academy-exam-preparation-2-years-residential-course/" }]}
       pill="Officer Training Pathway"
       title="National Defence Academy (NDA) 2-Year Residential Course"

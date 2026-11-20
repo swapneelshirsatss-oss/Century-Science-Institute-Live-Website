@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-const SITE = "https://centuryscienceinstitute.in";
+import { JsonLd, SITE } from "@/lib/schema";
 
 /**
  * Dark title band for inner "landing" pages in the new design.
@@ -20,7 +19,7 @@ export default function PageHero({ eyebrow, title, lead, crumbs = [], breadcrumb
 
   return (
     <section className="x-hero" style={{ paddingBottom: 0 }}>
-      {schema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />}
+      {schema && <JsonLd data={schema} />}
       <div className="x-wrap">
         <div className="x-hero-in" style={{ maxWidth: 900, paddingBlock: "clamp(40px,6vw,80px)" }}>
           {trail.length > 0 && (

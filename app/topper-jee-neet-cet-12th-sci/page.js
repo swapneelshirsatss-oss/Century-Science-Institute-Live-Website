@@ -1,18 +1,36 @@
 import PageHero from "@/components/site/PageHero";
 import TopperBoard from "@/components/site/TopperBoard";
 import DemoButton from "@/components/site/DemoButton";
+import { JsonLd, SITE } from "@/lib/schema";
 
 export const metadata = {
   title: "CSI NEET, JEE, CET Top Rankers from Nagpur",
   description: "Meet the NEET, JEE and MHT-CET toppers of Century Science Institute, Nagpur, including Tejas Dhande (99.23 percentile in MHT-CET).",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/topper-jee-neet-cet-12th-sci/"
+  },
+  openGraph: {
+    title: "CSI NEET, JEE, CET Top Rankers from Nagpur",
+    description: "Verified NEET, JEE Advanced, MHT-CET and HSC Science toppers of Century Science Institute, Nagpur.",
+    url: "https://centuryscienceinstitute.in/topper-jee-neet-cet-12th-sci/",
+    images: [{ url: "/photos/felicitation-group.jpg", alt: "Toppers at the Century Science Institute Felicitation Ceremony, Nagpur" }],
   }
+};
+
+const toppersPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE}/topper-jee-neet-cet-12th-sci/#webpage`,
+  url: `${SITE}/topper-jee-neet-cet-12th-sci/`,
+  name: "CSI NEET, JEE, CET Top Rankers from Nagpur",
+  isPartOf: { "@id": `${SITE}/#website` },
+  about: { "@id": `${SITE}/#organization` },
 };
 
 export default function ToppersPage() {
   return (
     <>
+      <JsonLd data={toppersPageSchema} />
       <PageHero
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Toppers & Results", href: "/topper-jee-neet-cet-12th-sci/" }]}
         eyebrow="Proven Student Achievements"

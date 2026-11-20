@@ -2,11 +2,19 @@ import Image from "next/image";
 import PageHero from "@/components/site/PageHero";
 import DemoButton from "@/components/site/DemoButton";
 import { photos } from "@/data/photos";
+import { JsonLd, SITE } from "@/lib/schema";
+
 export const metadata = {
   title: "Campus Gallery – Century Science Institute Nagpur",
   description: "View photos from Century Science Institute Nagpur. Annual events, student felicitations, parent-teacher meetings, and campus classrooms.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/gallery/"
+  },
+  openGraph: {
+    title: "Campus Gallery – Century Science Institute Nagpur",
+    description: "Explore photos of classroom sessions, annual student felicitations, parent-teacher meetings and campus life at Century Science Institute Nagpur.",
+    url: "https://centuryscienceinstitute.in/gallery/",
+    images: [{ url: "/photos/felicitation.jpg", alt: "Annual Student Felicitation at Century Science Institute Nagpur" }],
   }
 };
 
@@ -25,9 +33,26 @@ const galleryImages = [
   { title: "Self-Owned Academic Building", desc: "Dedicated institutional building on Hudkeshwar Road Nagpur.", src: photos.building },
 ];
 
+const gallerySchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "@id": `${SITE}/gallery/#gallery`,
+  url: `${SITE}/gallery/`,
+  name: "Century Science Institute Campus Life & Events Gallery",
+  description: "Photos from Century Science Institute Nagpur: classroom sessions, student felicitations, parent-teacher meetings and campus building.",
+  isPartOf: { "@id": `${SITE}/#website` },
+  image: galleryImages.map((img) => ({
+    "@type": "ImageObject",
+    name: img.title,
+    caption: img.desc,
+    contentUrl: `${SITE}${img.src}`,
+  })),
+};
+
 export default function GalleryPage() {
   return (
     <>
+      <JsonLd data={gallerySchema} />
       <PageHero
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Campus Gallery", href: "/gallery/" }]}
         eyebrow="Campus Moments"

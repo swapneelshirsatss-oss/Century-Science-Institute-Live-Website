@@ -4,7 +4,7 @@
  * changed on every deploy. Update the date when a page's content actually changes.
  */
 const BASE = "https://centuryscienceinstitute.in";
-const LAUNCH = "2026-10-12";
+const LAUNCH = "2026-11-20";
 
 const pages = [
   ["/", 1.0, "weekly"],

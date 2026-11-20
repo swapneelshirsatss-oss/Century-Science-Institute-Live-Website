@@ -1,9 +1,17 @@
 import DocPage, { FaqBlock } from "@/components/site/DocPage";
+import { buildCourseSchema, DEFAULT_OG_IMAGE } from "@/lib/schema";
+
 export const metadata = {
   title: "MHT-CET Test Series in Nagpur – Century Science Institute",
   description: "Enroll in the premier MHT-CET Test Series in Nagpur with real exam interface, performance ranking, and detailed video solutions.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/mht-cet-test-series/"
+  },
+  openGraph: {
+    title: "MHT-CET Test Series in Nagpur – Century Science Institute",
+    description: "50+ chapter-wise and full-length MHT-CET computer-based mock tests in Nagpur for PCM & PCB aspirants.",
+    url: "https://centuryscienceinstitute.in/mht-cet-test-series/",
+    images: [DEFAULT_OG_IMAGE],
   }
 };
 
@@ -18,9 +26,16 @@ const faqs = [
   }
 ];
 
+const courseSchema = buildCourseSchema({
+  name: "MHT-CET Test Series in Nagpur (PCM & PCB)",
+  description: "50+ chapter-wise and full-length MHT-CET computer-based mock tests in Nagpur with question-wise analytics and doubt sessions.",
+  path: "/mht-cet-test-series/",
+});
+
 export default function MhtCetTestSeriesPage() {
   return (
     <DocPage
+      schema={courseSchema}
       crumbs={[{ label: "Home", href: "/" }, { label: "MHT-CET Coaching", href: "/mht-cet-coaching/" }, { label: "Test Series", href: "/mht-cet-test-series/" }]}
       pill="State-of-the-Art CBT Exam Simulation"
       title="MHT-CET Test Series Program in Nagpur"
