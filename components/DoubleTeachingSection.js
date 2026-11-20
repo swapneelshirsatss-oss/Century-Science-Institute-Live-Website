@@ -20,7 +20,7 @@ export default function DoubleTeachingSection({ onOpenAdmission }) {
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
             <span>Proprietary CSI Academic Methodology</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b1e3d] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#16303F] tracking-tight">
             The Unique Double Teaching Concept & Director Mentorship
           </h2>
           <p className="text-base text-slate-600 leading-relaxed">
@@ -33,7 +33,7 @@ export default function DoubleTeachingSection({ onOpenAdmission }) {
           {/* Card 1: Double Teaching Concept */}
           <div className="bg-slate-50 rounded-3xl p-8 sm:p-10 border border-blue-200/80 shadow-md flex flex-col justify-between">
             <div className="space-y-6">
-              <div className="w-14 h-14 rounded-2xl bg-[#0b1e3d] flex items-center justify-center text-amber-400 shadow-md shadow-blue-950/20">
+              <div className="w-14 h-14 rounded-2xl bg-[#16303F] flex items-center justify-center text-amber-400 shadow-md shadow-blue-950/20">
                 <Layers className="w-7 h-7" />
               </div>
 
@@ -107,7 +107,7 @@ export default function DoubleTeachingSection({ onOpenAdmission }) {
           </div>
 
           {/* Card 2: Directors are Tutors & Direct Accountability */}
-          <div className="bg-gradient-to-br from-slate-900 via-[#0b1e3d] to-[#040e1f] text-white rounded-3xl p-8 sm:p-10 border border-blue-900/40 shadow-xl flex flex-col justify-between">
+          <div className="bg-gradient-to-br from-slate-900 via-[#16303F] to-[#0B1820] text-white rounded-3xl p-8 sm:p-10 border border-blue-900/40 shadow-xl flex flex-col justify-between">
             <div className="space-y-6">
               <div className="w-14 h-14 rounded-2xl bg-amber-500 flex items-center justify-center text-slate-950 shadow-md shadow-amber-500/20">
                 <UserCheck className="w-7 h-7" />
@@ -118,7 +118,7 @@ export default function DoubleTeachingSection({ onOpenAdmission }) {
                   Direct Subject Accountability
                 </span>
                 <h3 className="text-2xl font-extrabold text-white mt-1">
-                  Directors are Tutors: Led by Mrs. Meghna Marchatwar
+                  Directors are Tutors: Led by Mrs. Meghana Marchatwar
                 </h3>
               </div>
 
@@ -126,13 +126,13 @@ export default function DoubleTeachingSection({ onOpenAdmission }) {
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden bg-amber-400 p-0.5">
                     <img
-                      src="https://centuryscienceinstitute.in/wp-content/uploads/2025/07/Meghna-Maam-768x1076.jpeg"
-                      alt="Director Mrs. Meghna Marchatwar Century Science Institute Nagpur"
+                      src="https://centuryscienceinstitute.in/wp-content/uploads/2025/07/Meghana-Maam-768x1076.jpeg"
+                      alt="Director Mrs. Meghana Marchatwar Century Science Institute Nagpur"
                       className="w-full h-full object-cover object-top rounded-full"
                     />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-sm text-white">Mrs. Meghna Marchatwar</h4>
+                    <h4 className="font-extrabold text-sm text-white">Mrs. Meghana Marchatwar</h4>
                     <p className="text-xs text-amber-300">M.Sc. in Biology, B.Ed., A.D.I.D. (15+ Years Experience)</p>
                   </div>
                 </div>
@@ -144,7 +144,7 @@ export default function DoubleTeachingSection({ onOpenAdmission }) {
               <div className="space-y-2.5 text-xs text-slate-300">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Personal mentoring with small batch sizes (30–40 students max)</span>
+                  <span>Personal mentoring with small batch sizes (30-40 students max)</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />

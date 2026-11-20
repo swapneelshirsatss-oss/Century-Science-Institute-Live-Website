@@ -33,7 +33,7 @@ export default function FAQSection({ faqs, title = "Frequently Asked Questions",
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Clear Guidance</span>
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b1e3d] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16303F] tracking-tight">
             {title}
           </h2>
           <p className="text-sm text-slate-600 max-w-xl mx-auto">

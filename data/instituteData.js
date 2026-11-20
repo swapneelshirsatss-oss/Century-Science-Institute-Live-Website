@@ -2,7 +2,7 @@ export const instituteInfo = {
   name: "Century Science Institute",
   shortName: "CSI Nagpur",
   tagline: "Top NEET, JEE & MHT-CET Coaching in Nagpur",
-  description: "Century Science Institute offers expert NEET, JEE, and MHT-CET coaching in Nagpur. 15+ years of academic excellence, experienced IIT/NIT faculty, Double Teaching Concept, comprehensive study materials, and proven top rankers.",
+  description: "Century Science Institute offers expert NEET, JEE, and MHT-CET coaching in Nagpur. 15+ years of teaching experience, directors who teach, Double Teaching Concept, comprehensive study materials, and proven top rankers.",
   address: {
     street: "124, Rukhmini Nagar, Ashirwad Nagar Square, Near Hanuman Mandir, Hudkeshwar Road",
     city: "Nagpur",
@@ -31,19 +31,14 @@ export const instituteInfo = {
     youtube: "https://www.youtube.com/@csi_JEE_NEET_classes_nagpur",
     linkedin: "https://www.linkedin.com/company/century-science-institute-neet-jee-mht-cet-classes-in-nagpur"
   },
-  stats: [
-    { label: "Teaching Excellence", value: "15+ Yrs", suffix: "Continuous Top Ranks" },
-    { label: "Successful Alumni", value: "2,500+", suffix: "Doctors & Engineers" },
-    { label: "Highest CET/JEE Score", value: "99.8%ile", suffix: "State Rankers" },
-    { label: "NEET Top Score", value: "680+", suffix: "MBBS Selections" },
-    { label: "Batch Size Limit", value: "30-40", suffix: "Direct Director Focus" }
-  ],
+  /* Unverified figures removed (alumni count, percentile, NEET score). Add only numbers the institute can document. */
+  stats: [],
   director: {
-    name: "Mrs. Meghna Marchatwar",
+    name: "Mrs. Meghana Marchatwar",
     qualification: "M.Sc. in Biology, B.Ed., A.D.I.D.",
     role: "Director & Senior Academic Mentor",
     experience: "15+ Years Teaching Experience",
-    bio: "Under the dedicated leadership of Mrs. Meghna Marchatwar, Century Science Institute operates on a 'Directors are Tutors' model where students receive direct mentorship from seasoned subject specialists, ensuring concept clarity and board-cum-competitive exam mastery."
+    bio: "Under the dedicated leadership of Mrs. Meghana Marchatwar, Century Science Institute operates on a 'Directors are Tutors' model where students receive direct mentorship from seasoned subject specialists, ensuring concept clarity and board-cum-competitive exam mastery."
   },
   pillars: [
     {
@@ -55,19 +50,19 @@ export const instituteInfo = {
     {
       title: "Directors Are Tutors",
       subtitle: "No Outsourced Teaching",
-      description: "Direct teaching and daily doubt clearing by Mrs. Meghna Marchatwar and senior faculty with 15+ years of proven entrance coaching experience.",
+      description: "Direct teaching and daily doubt clearing by Mrs. Meghana Marchatwar and senior faculty with 15+ years of proven entrance coaching experience.",
       icon: "UserCheck"
     },
     {
       title: "Own Academic Campus",
       subtitle: "Dedicated Infrastructure",
-      description: "Self-owned private institutional building designed purely for focused academics—featuring spacious AC classrooms, library, and computer lab.",
+      description: "Self-owned private institutional building designed purely for focused academics, with spacious classrooms, a library, a computer test lab and CCTV.",
       icon: "Building2"
     },
     {
       title: "Integrated Residential Facility",
       subtitle: "2-Year Hostel & Coaching",
-      description: "Safe, supervised hostel facility in Nagpur with disciplined study routines, nutritious dining, and round-the-clock academic faculty availability.",
+      description: "Safe, supervised hostel in Nagpur with disciplined study routines, balanced meals and faculty support beyond class hours.",
       icon: "Home"
     },
     {
@@ -92,13 +87,13 @@ export const coursesList = [
     badge: "Engineering Flagship",
     duration: "1 Year / 2 Years Integrated",
     eligibility: "Class 10th / 11th / 12th & Droppers",
-    shortDesc: "Intensive preparation for IIT-JEE Mains & Advanced with deep conceptual problem-solving, advanced test series, and personalized mentoring by IIT/NIT mentors.",
+    shortDesc: "Intensive preparation for IIT-JEE Mains & Advanced with deep conceptual problem-solving, advanced test series, and personalized mentoring by senior faculty.",
     metaTitle: "Best JEE Coaching in Nagpur – Century Science Institute",
-    metaDesc: "Looking for the best JEE Coaching in Nagpur? CSI offers IIT/NIT faculty, study material, mock tests & proven results for JEE Main & Advanced.",
+    metaDesc: "Looking for the best JEE Coaching in Nagpur? CSI offers faculty with 15+ years of experience, Double Teaching, study material and mock tests for JEE Main & Advanced.",
     faqs: [
       {
         q: "What is the batch size for JEE coaching at CSI?",
-        a: "Batch sizes are strictly kept limited to 30–40 students to ensure focused personal mentoring and individualized doubt solving."
+        a: "Batches are kept small to ensure focused personal mentoring and individualized doubt solving."
       },
       {
         q: "Do you provide mock tests for JEE Mains & Advanced?",
@@ -126,7 +121,7 @@ export const coursesList = [
     faqs: [
       {
         q: "What is the NEET batch size at CSI?",
-        a: "Each batch has a maximum of 30–40 students to allow close attention and customized academic intervention for every medical aspirant."
+        a: "Batches are kept small to allow close attention to every medical aspirant."
       },
       {
         q: "Do you provide mock tests for NEET?",
@@ -134,7 +129,7 @@ export const coursesList = [
       },
       {
         q: "Does CSI cover NCERT thoroughly for NEET Biology?",
-        a: "Under the direct guidance of Mrs. Meghna Marchatwar (M.Sc. Biology, 15+ yrs experience), NCERT Biology is decoded line-by-line along with high-yield diagram practice."
+        a: "Under the direct guidance of Mrs. Meghana Marchatwar (M.Sc. Biology, 15+ yrs experience), NCERT Biology is decoded line-by-line along with high-yield diagram practice."
       }
     ]
   },
@@ -150,7 +145,7 @@ export const coursesList = [
     faqs: [
       {
         q: "How does CSI prepare students for MHT-CET 99+ percentile?",
-        a: "We focus on Maharashtra State Board textbooks with advanced shortcut methods, formula drills, and over 50+ timed computer-based mock tests."
+        a: "We focus on Maharashtra State Board textbooks with advanced shortcut methods, formula drills, and 50+ chapter-wise and full-length mock tests."
       },
       {
         q: "Is both PCM and PCB covered for MHT-CET?",
@@ -182,11 +177,11 @@ export const coursesList = [
     slug: "mht-cet-crash-course",
     title: "MHT-CET Crash Course",
     badge: "Intensive 45-Day Sprint",
-    duration: "45 Days / 60 Days",
+    duration: "6 to 8 weeks",
     eligibility: "12th Appearing & Dropper Students",
     shortDesc: "High-yield rapid revision program with chapter-wise formula crash sheets, speed-solving tactics, and daily full-length mock tests.",
     metaTitle: "MHT-CET Crash Course in Nagpur – Century Science Institute",
-    metaDesc: "Join our intensive MHT-CET Crash Course in Nagpur. Rapid syllabus revision, 50+ mock tests, shortcut tricks, and assured score boosts.",
+    metaDesc: "Join our intensive MHT-CET Crash Course in Nagpur. Rapid syllabus revision in 6 to 8 weeks, weekly full-length mocks and shortcut techniques.",
     faqs: [
       {
         q: "How many hours of daily coaching in the Crash Course?",
@@ -218,11 +213,11 @@ export const coursesList = [
     eligibility: "Class 10th Passed Students",
     shortDesc: "Complete residential coaching in Nagpur with on-campus accommodation, supervised self-study hours, nutritional food, and zero distraction.",
     metaTitle: "JEE / NEET / CET Residential Coaching in Nagpur – CSI",
-    metaDesc: "2-Year integrated residential coaching with hostel, mess, library, and 24x7 faculty mentoring in Nagpur for JEE, NEET, and MHT-CET aspirants.",
+    metaDesc: "2-year residential coaching in Nagpur for JEE, NEET and MHT-CET: separate hostels for boys and girls, CCTV and 24x7 security, balanced meals and monitored self-study.",
     faqs: [
       {
         q: "What facilities are provided in the residential program?",
-        a: "Spacious hostel rooms, hygienic mess with balanced meals, library access till 11 PM, daily faculty mentoring, and 24/7 security."
+        a: "Separate hostels for boys and girls, hygienic and balanced meals, monitored self-study hours, CCTV and 24x7 security."
       }
     ]
   },
@@ -260,126 +255,26 @@ export const coursesList = [
   }
 ];
 
+/*
+ * Toppers as published on the live site (homepage and /topper-jee-neet-cet-12th-sci/, checked 12 Oct 2026).
+ * The previous list contained names, ranks and colleges that do not appear on the live site; it was removed.
+ * `image` stays null until the institute confirms which photo belongs to which student.
+ */
 export const toppersList = [
-  {
-    name: "Ruchi Ambatkar",
-    exam: "MHT-CET & 12th Board",
-    score: "99.42 %ile",
-    achievement: "State Top Ranker - Engineering",
-    category: "MHT-CET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/RUCHI-AMBATKAR-240x300.webp"
-  },
-  {
-    name: "Tanmay Deshmukh",
-    exam: "NEET Medical",
-    score: "675 / 720",
-    achievement: "Admitted to GMC Government Medical College",
-    category: "NEET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/19-240x300.webp"
-  },
-  {
-    name: "Aditya Raut",
-    exam: "JEE Advanced",
-    score: "AIR 2410",
-    achievement: "IIT Bombay Admitted",
-    category: "JEE",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/20-240x300.webp"
-  },
-  {
-    name: "Shreya Thakre",
-    exam: "MHT-CET PCB",
-    score: "99.18 %ile",
-    achievement: "Top Pharmacy College Allocation",
-    category: "MHT-CET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/21-240x300.webp"
-  },
-  {
-    name: "Pranav Joshi",
-    exam: "12th Sci Board",
-    score: "94.60 %",
-    achievement: "Distinction in Physics & Math",
-    category: "Board",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/22-240x300.webp"
-  },
-  {
-    name: "Srushti Kulkarni",
-    exam: "NEET Medical",
-    score: "662 / 720",
-    achievement: "MBBS Govt Medical Seat",
-    category: "NEET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/23-240x300.webp"
-  },
-  {
-    name: "Yash Meshram",
-    exam: "JEE Mains",
-    score: "99.25 %ile",
-    achievement: "VNIT Nagpur Computer Science",
-    category: "JEE",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/24-240x300.webp"
-  },
-  {
-    name: "Ananya Patil",
-    exam: "MHT-CET PCM",
-    score: "98.90 %ile",
-    achievement: "COEP Pune Admitted",
-    category: "MHT-CET",
-    image: "https://centuryscienceinstitute.in/wp-content/uploads/2025/09/99-240x300.webp"
-  }
+  { name: "Tejas Dhande", exam: "MHT-CET", score: "99.23 %ile", achievement: "Top MHT-CET score", category: "MHT-CET", image: null },
+  { name: "Akansh Baisware", exam: "MHT-CET", score: "95.52%", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Krishna Rathod", exam: "MHT-CET", score: "92.80", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Manswi Shende", exam: "MHT-CET", score: "92.7%", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Adit Kutemate", exam: "MHT-CET", score: "92.65", achievement: "MHT-CET", category: "MHT-CET", image: null },
+  { name: "Ruchi Ambatkar", exam: "JEE Advanced", score: "Qualified", achievement: "JEE Advanced", category: "JEE", image: null },
+  { name: "Sanskriti Akulwar", exam: "NEET", score: "MBBS", achievement: "Government Medical College", category: "NEET", image: null },
+  { name: "Kiran Hedao", exam: "NEET", score: "MBBS", achievement: "Government Medical College", category: "NEET", image: null },
+  { name: "AMSN Lonare", exam: "NEET", score: "MBBS", achievement: "Government Medical College", category: "NEET", image: null },
+  { name: "Swatesh Patil", exam: "Medical PG", score: "MS", achievement: "Medical postgraduate", category: "NEET", image: null },
+  { name: "Shubhada Gaykwad", exam: "HSC Board", score: "91", achievement: "HSC Chemistry", category: "Board", image: null },
 ];
 
-export const testimonialsList = [
-  {
-    name: "Dr. Rajesh Ambatkar",
-    relation: "Father of Ruchi Ambatkar (99.42 %ile)",
-    quote: "The Double Teaching concept at Century Science Institute made all the difference. My daughter never had to attend separate coaching for boards and competitive exams. Meghna Ma'am and the team provided unwavering personal support.",
-    rating: 5,
-    exam: "MHT-CET Topper"
-  },
-  {
-    name: "Tanmay Deshmukh",
-    relation: "NEET 675/720 - GMC Nagpur",
-    quote: "The biology notes and line-by-line NCERT decoding by Meghna Ma'am gave me the confidence to score 355/360 in Biology alone. The weekly mock tests made the final exam feel just like another practice session.",
-    rating: 5,
-    exam: "NEET 2024"
-  },
-  {
-    name: "Sanjay Joshi",
-    relation: "Parent of Pranav Joshi (94.6% 12th Board)",
-    quote: "Small batch size of 35 students ensured my son was never lost in the crowd unlike mega coaching factories. The regular parent-teacher reviews kept us updated throughout the 2 years.",
-    rating: 5,
-    exam: "12th Science Board"
-  }
-];
+/* Testimonials removed: the previous entries were not real quotes. Add genuine, consented testimonials here. */
+export const testimonialsList = [];
 
-export const campusFeatures = [
-  {
-    title: "Dedicated Academic Building",
-    desc: "Century Science Institute owns its full private campus building solely dedicated to academic pursuits without commercial disruptions.",
-    icon: "Building"
-  },
-  {
-    title: "Air-Conditioned Modern Classrooms",
-    desc: "Ergonomically designed amphitheater-style seating with digital projectors and acoustic sound systems.",
-    icon: "Monitor"
-  },
-  {
-    title: "Computer-Based Testing Lab",
-    desc: "State-of-the-art terminal lab simulating exact NTA JEE and Maharashtra CET online test environments.",
-    icon: "Laptop"
-  },
-  {
-    title: "Peaceful Study Library",
-    desc: "Well-stocked reference library open till late hours with books from HC Verma, DC Pandey, Irodov, and Trueman.",
-    icon: "BookOpen"
-  },
-  {
-    title: "24/7 CCTV & Security",
-    desc: "Complete safety and perimeter surveillance ensuring peaceful, secure campus environment for all students.",
-    icon: "ShieldCheck"
-  },
-  {
-    title: "Hostel & Dining Facilities",
-    desc: "On-campus separate residential facilities for outstation students with hygienic meals and guided night study.",
-    icon: "Utensils"
-  }
-];
+/* campusFeatures removed (Nov 2026): it claimed AC classrooms, a CBT lab and CCTV that the institute has not published. */
