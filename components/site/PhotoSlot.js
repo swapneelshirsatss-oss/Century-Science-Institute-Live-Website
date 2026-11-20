@@ -14,11 +14,11 @@ const initials = (name = "") =>
  * so a missing photo reads as intentional instead of a "Photo, 1:1" developer placeholder.
  * `label` is kept as a data attribute so it is still clear which picture is missing.
  */
-export default function PhotoSlot({ src, alt = "", label, note, sizes = "(max-width: 860px) 100vw, 50vw", priority = false, className = "" }) {
+export default function PhotoSlot({ src, alt = "", label, note, sizes = "(max-width: 860px) 100vw, 50vw", priority = false, quality, className = "" }) {
   return (
     <div className={`x-slot ${className}`}>
       {src ? (
-        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} />
+        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} quality={quality} />
       ) : (
         <span className="x-slot-empty" role="img" aria-label={alt || label} data-missing={label}>
           <b aria-hidden="true">{initials(note || alt)}</b>

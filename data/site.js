@@ -55,6 +55,15 @@ export const director = {
   photo: photos.director,
 };
 
+/* Videos embedded on the live homepage (Nov 2026). Titles shortened from the YouTube titles. */
+export const videos = [
+  { id: "7C22ARTx4gs", title: "MHT-CET coaching at CSI" },
+  { id: "AzXi1nH9ss8", title: "IIT-JEE preparation in Nagpur" },
+  { id: "BoKg8qGhhQA", title: "JEE and NEET coaching: fees and scholarships" },
+  { id: "ZcjP0dq-wcg", title: "JEE and NEET classes: NEET scholarship" },
+];
+export const youtubeChannel = "https://www.youtube.com/@csi_JEE_NEET_classes_nagpur";
+
 /* Main courses shown on the homepage and /coaching/. All hrefs are existing live URLs. */
 export const courses = [
   { name: "JEE", href: "/jee-coaching/", desc: "Main and Advanced. Class 11, Class 12 and repeaters. Topic-wise mocks and past papers." },

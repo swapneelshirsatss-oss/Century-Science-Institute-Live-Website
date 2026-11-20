@@ -5,7 +5,8 @@ import DemoButton from "@/components/site/DemoButton";
 import PhotoSlot from "@/components/site/PhotoSlot";
 import TestCalendar from "@/components/site/TestCalendar";
 import Ticker from "@/components/site/Ticker";
-import { contact, courses, director, featuredTopper, tickerItems, toppers } from "@/data/site";
+import VideoRail from "@/components/site/VideoRail";
+import { contact, courses, director, featuredTopper, tickerItems, toppers, videos, youtubeChannel } from "@/data/site";
 import { photos } from "@/data/photos";
 
 /* Title and description kept from the live homepage (SEO continuity). */
@@ -38,7 +39,7 @@ export default function HomePage() {
       <section className="x-hero" aria-labelledby="hero-title">
         {HERO_PHOTO && (
           <div className="x-hero-photo">
-            <PhotoSlot src={HERO_PHOTO} alt="Class in session at Century Science Institute, Nagpur" priority sizes="100vw" />
+            <PhotoSlot src={HERO_PHOTO} alt="Class in session at Century Science Institute, Nagpur" priority sizes="100vw" quality={60} />
           </div>
         )}
         <AtomCanvas />
@@ -65,7 +66,7 @@ export default function HomePage() {
       <section className="x-sec" id="results" aria-labelledby="results-title">
         <div className="x-wrap">
           <p className="x-eyebrow">Results</p>
-          <h2 id="results-title" className="x-big x-h2">Nagpur&apos;s toppers studied here.</h2>
+          <h2 id="results-title" className="x-big x-h2 x-pat">Nagpur&apos;s toppers studied here.</h2>
           <div className="x-board">
             <div className="x-board-txt">
               <CountUp className="x-score" value={featuredTopper.score} />
@@ -91,7 +92,7 @@ export default function HomePage() {
       {/* ================= DOUBLE TEACHING ================= */}
       <section className="x-sec x-dt" id="method" aria-labelledby="method-title">
         <div className="x-wrap">
-          <h2 id="method-title" className="x-big x-h2" style={{ marginTop: 0 }}>Boards and entrance. Same day.</h2>
+          <h2 id="method-title" className="x-big x-h2 x-pat" style={{ marginTop: 0 }}>Boards and entrance. Same day.</h2>
           <p className="x-sub">
             Most students are told to pick one in Class 12. At CSI, every topic is taught twice, so board marks and
             entrance rank grow together.
@@ -144,10 +145,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= COURSES ================= */}
-      <section className="x-sec" id="courses" aria-labelledby="courses-title" style={{ paddingTop: 0 }}>
+      {/* ================= VIDEOS ================= */}
+      <section className="x-sec x-band-soft" aria-labelledby="vid-title">
         <div className="x-wrap">
-          <h2 id="courses-title" className="x-big x-h2" style={{ marginTop: 0 }}>Pick your exam.</h2>
+          <h2 id="vid-title" className="x-big x-h2 x-pat" style={{ marginTop: 0 }}>See CSI on video.</h2>
+          <VideoRail videos={videos} />
+          <p className="x-more"><a href={youtubeChannel} target="_blank" rel="noopener">More on our YouTube channel</a></p>
+        </div>
+      </section>
+
+      {/* ================= COURSES ================= */}
+      <section className="x-sec" id="courses" aria-labelledby="courses-title">
+        <div className="x-wrap">
+          <h2 id="courses-title" className="x-big x-h2 x-pat" style={{ marginTop: 0 }}>Pick your exam.</h2>
           <div className="x-courses">
             {courses.map((c) => (
               <Link className="x-crow" href={c.href} key={c.href}>

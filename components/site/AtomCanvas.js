@@ -103,6 +103,8 @@ export default function AtomCanvas({ badgeSrc = "/brand/csi-badge.webp" }) {
     };
 
     const frame = (now) => {
+      // Not laid out yet (hidden tab, iframe, before first layout): drawImage on a 0-size canvas throws, so wait.
+      if (!S) { fit(); if (!S) { if (running && !reduce) raf = requestAnimationFrame(frame); return; } }
       if (running && FRAME_MS && now - lastDraw < FRAME_MS - 2) { raf = requestAnimationFrame(frame); return; }
       lastDraw = now;
       const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;

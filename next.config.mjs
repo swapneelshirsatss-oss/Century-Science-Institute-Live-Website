@@ -36,6 +36,7 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [60, 75], // 60 for the darkened hero photo
     remotePatterns: [{ protocol: "https", hostname: "centuryscienceinstitute.in" }],
   },
   async redirects() {

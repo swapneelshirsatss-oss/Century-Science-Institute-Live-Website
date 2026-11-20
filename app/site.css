@@ -583,3 +583,98 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 /* Topper portraits are full-length studio shots: keep the face in a square crop */
 .x-tp .x-slot img { object-position: 50% 12%; }
 .x-board .x-slot img { object-position: 50% 15%; }
+
+/* =====================================================================
+   Mobile-first pass + brand texture (Nov 2026). 80%+ of visitors are on phones.
+   Patterns borrowed, not palettes (refs in docs/design-refs/):
+   - Stripe: soft colour wash at the top of sections, faint pattern behind headings.
+   - Nike: billboard type above a calm layout, swipe rails on phones, press feedback.
+   Colours stay CSI teal + gold on midnight; square corners stay (round only for the play icon).
+   ===================================================================== */
+
+/* Faint dot pattern behind section headings, fading out away from the text */
+.x-pat { position: relative; isolation: isolate; }
+.x-pat::before {
+  content: ""; position: absolute; z-index: -1; inset: -26px 0 -18px -20px; pointer-events: none; /* right 0: a negative right inset made phones scroll sideways */
+  background-image: radial-gradient(rgba(10,115,128,.26) 1.2px, transparent 1.5px);
+  background-size: 14px 14px;
+  -webkit-mask-image: radial-gradient(55% 75% at 22% 50%, #000 0%, transparent 78%);
+          mask-image: radial-gradient(55% 75% at 22% 50%, #000 0%, transparent 78%);
+}
+.x-dt .x-pat::before { background-image: radial-gradient(rgba(248,250,252,.18) 1.2px, transparent 1.5px); }
+
+/* Soft brand wash at the top of light sections */
+.x-sec:not(.x-dt):not(.x-visit):not(.x-band-soft) {
+  background:
+    radial-gradient(60% 240px at 0% 0%, rgba(10,127,142,.08), transparent 70%),
+    radial-gradient(45% 220px at 100% 0%, rgba(248,202,21,.09), transparent 70%);
+}
+.x-band-soft { background: linear-gradient(180deg, #E9F4F5 0%, var(--paper) 85%); }
+
+/* Dark Double Teaching band: teal light top-left, warm gold low right */
+.x-dt { background:
+  radial-gradient(55% 38% at 0% 0%, rgba(10,127,142,.38), transparent 72%),
+  radial-gradient(45% 30% at 100% 100%, rgba(248,202,21,.10), transparent 72%),
+  linear-gradient(180deg, var(--slate) 0%, var(--night) 100%); }
+
+/* Gold visit band: lit from the top left */
+.x-visit { background: linear-gradient(135deg, #FFDA45 0%, var(--gold) 50%, #F1BC0A 100%); }
+
+/* Videos (YouTube facade: thumbnail first, player on tap) */
+.x-vids { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1000px) { .x-vids { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.x-vid { position: relative; aspect-ratio: 16 / 9; background: var(--night); overflow: hidden; }
+.x-vid button { position: absolute; inset: 0; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.x-vid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s var(--ease-out); }
+.x-vid button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.x-vid iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.x-play { position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; background: var(--gold); box-shadow: 0 8px 24px rgba(14,29,39,.35); transition: transform .2s var(--ease-out); }
+.x-play::after { content: ""; position: absolute; left: 24px; top: 18px; border-left: 17px solid var(--night); border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+@media (hover: hover) { .x-vid button:hover img { transform: scale(1.04); } .x-vid button:hover .x-play { transform: scale(1.08); } }
+.x-vid-t { margin: 10px 0 0; font-weight: 700; font-size: 15.5px; line-height: 1.35; }
+
+/* Press feedback on touch (Nike-style) */
+.x-crow:active, .x-tp:active { background: var(--hover); }
+.x-vid button:active .x-play { transform: scale(.92); }
+
+/* ---------- Phones ---------- */
+@media (max-width: 760px) {
+  .x-sec { padding-block: 56px; }
+  .x-h2 { font-size: clamp(36px, 10.5vw, 48px); }
+  .x-sub { font-size: 17px; }
+
+  /* Hero: shorter, thumb-sized full-width buttons, atom kept clear of the headline */
+  .x-hero-in { padding-block: 32px 40px; }
+  .x-hero h1 { font-size: clamp(50px, 15.5vw, 74px); }
+  .x-lead { margin-top: 18px; }
+  .x-ctas { margin-top: 26px; }
+  .x-ctas .x-btn { flex: 1 1 100%; min-height: 54px; }
+  .x-atom { width: 64vw; right: -16vw; top: 12%; opacity: .3; }
+  @keyframes x-atom-in { from { opacity: 0; } to { opacity: .3; } }
+
+  /* Swipe rails instead of long stacks: toppers and videos */
+  .x-wall, .x-vids {
+    grid-auto-flow: column; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory;
+    gap: 12px; margin-inline: -16px; padding: 0 16px 6px; scroll-padding-inline: 16px; scrollbar-width: none;
+  }
+  .x-wall { grid-auto-columns: 44%; }
+  .x-vids { grid-auto-columns: 80%; }
+  .x-wall > *, .x-vids > * { scroll-snap-align: start; }
+  .x-wall::-webkit-scrollbar, .x-vids::-webkit-scrollbar { display: none; }
+  .x-tp-r { font-size: 32px; }
+
+  /* Double Teaching */
+  .x-hours .t { font-size: 52px; }
+  .x-facts b { font-size: 40px; }
+  .x-facts span { font-size: 14.5px; }
+
+  /* Director photo: a shorter crop so the text is not pushed a full screen down */
+  .x-dir .x-slot { aspect-ratio: 4 / 3; }
+
+  /* Course rows: name and arrow on one line, description below; whole row is the tap target */
+  .x-crow { grid-template-columns: 1fr auto; grid-template-areas: "nm go" "ds ds"; gap: 6px 12px; padding-block: 18px; }
+  .x-crow .nm { grid-area: nm; font-size: 40px; }
+  .x-crow .go { grid-area: go; }
+  .x-crow .ds { grid-area: ds; font-size: 15.5px; }
+  .x-crow:hover { padding-inline: 0; }
+}
