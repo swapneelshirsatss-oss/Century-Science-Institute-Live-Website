@@ -6,7 +6,7 @@ import { contact } from "@/data/site";
 export const metadata = {
   title: "10th Std Test Series - Century Science Institute",
   description:
-    "10th Std test series in Nagpur on the SSC and CBSE board pattern: chapter-wise and full-length tests, board-style checking, weekly scorecards and doubt-solving at Century Science Institute.",
+    "10th Std test series in Nagpur on the SSC and CBSE pattern: chapter-wise and full-length tests, board-style checking and weekly scorecards.",
   alternates: { canonical: "/10th-std-test-series/" },
   openGraph: {
     title: "10th Std Test Series - Century Science Institute",

@@ -2,7 +2,7 @@ import DocPage, { FaqBlock } from "@/components/site/DocPage";
 
 export const metadata = {
   title: "JEE / NEET / CET Residential Coaching in Nagpur – CSI",
-  description: "2-year residential coaching in Nagpur for JEE, NEET and MHT-CET: separate hostels for boys and girls, CCTV and 24x7 security, balanced meals and monitored self-study.",
+  description: "2-year residential JEE, NEET and MHT-CET coaching in Nagpur: separate hostels for boys and girls, CCTV, 24x7 security and monitored self-study.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/jee-neet-cet-residential-course/"
   }

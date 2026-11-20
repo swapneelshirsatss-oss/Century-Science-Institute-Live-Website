@@ -39,8 +39,23 @@ const nextConfig = {
     qualities: [60, 75], // 60 for the darkened hero photo
     remotePatterns: [{ protocol: "https", hostname: "centuryscienceinstitute.in" }],
   },
+  // Basic security headers for every page (none were sent by default).
+  async headers() {
+    return [{
+      source: "/:path*",
+      headers: [
+        { key: "Strict-Transport-Security", value: "max-age=31536000" },
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+      ],
+    }];
+  },
   async redirects() {
     return [
+      // www served a full duplicate of the site; send it to the main domain
+      { source: "/:path*", has: [{ type: "host", value: "www.centuryscienceinstitute.in" }], destination: "https://centuryscienceinstitute.in/:path*", permanent: true },
       // Each product/page path, with and without the trailing slash
       ...productRedirects.flatMap(([from, to]) => [
         { source: from.replace(/\/$/, ""), destination: to, permanent: true },

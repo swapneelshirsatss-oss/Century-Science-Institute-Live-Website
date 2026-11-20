@@ -4,7 +4,7 @@ import DemoButton from "@/components/site/DemoButton";
 
 export const metadata = {
   title: "CSI NEET, JEE, CET Top Rankers from Nagpur",
-  description: "CSI Toppers – NEET, JEE, CET Top Rankers from Nagpur Meet the NEET, JEE & CET toppers from Century Science Institute, Nagpur. Consistent top ranks, 100% success stories.",
+  description: "Meet the NEET, JEE and MHT-CET toppers of Century Science Institute, Nagpur, including Tejas Dhande (99.23 percentile in MHT-CET).",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/topper-jee-neet-cet-12th-sci/"
   }

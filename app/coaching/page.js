@@ -6,7 +6,7 @@ import DemoButton from "@/components/site/DemoButton";
 export const metadata = {
   title: "Top Coaching Classes in Nagpur | NEET, JEE, CET & Science – CSI",
   description:
-    "Looking for reliable Coaching Classes in Nagpur? Century Science Institute offers NEET, JEE and MHT-CET coaching with experienced faculty, small batches and steady academic guidance.",
+    "NEET, JEE and MHT-CET coaching classes in Nagpur at Century Science Institute: Double Teaching, small batches and experienced faculty.",
   alternates: { canonical: "/coaching/" },
   openGraph: {
     title: "Top Coaching Classes in Nagpur | NEET, JEE, CET & Science – CSI",
