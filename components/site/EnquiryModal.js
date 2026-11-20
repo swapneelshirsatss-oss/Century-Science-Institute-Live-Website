@@ -1,20 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { contact } from "@/data/site";
 import { normalizeMobile, PHONE_ERROR } from "@/lib/phone";
+import { enquiryWhatsAppUrl, pushToWhatsApp } from "@/lib/whatsapp";
 
 const EXAMS = ["JEE", "NEET", "MHT-CET", "11th & 12th Science", "10th test series", "Residential course", "NDA / Naval Academy"];
 const CLASSES = ["Class 10", "Class 11", "Class 12", "12th pass (repeater)"];
 
 /**
  * Site-wide "Book free counselling" form.
- * Shows a real result: success only when the API confirms delivery; otherwise the error
- * plus call and WhatsApp options, so an enquiry is never silently lost.
+ * On submit it opens the institute's WhatsApp with the details typed in; the student presses Send.
+ * The lead is also posted to /api/inquiry for the sheet/webhook when one is configured.
  */
 export default function EnquiryModal({ isOpen, onClose }) {
-  const [state, setState] = useState("idle"); // idle | sending | sent | failed
-  const [error, setError] = useState("");
+  const [state, setState] = useState("idle"); // idle | sent
+  const [waUrl, setWaUrl] = useState("");
   const [fieldErr, setFieldErr] = useState({}); // { name?: string, phone?: string }
   const [form, setForm] = useState({ name: "", phone: "", course: "JEE", studentClass: "Class 11", parentName: "", website: "" });
   const dialogRef = useRef(null);
@@ -45,7 +45,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
     };
   }, [isOpen, onClose]);
 
-  useEffect(() => { if (!isOpen) { setState("idle"); setError(""); setFieldErr({}); } }, [isOpen]);
+  useEffect(() => { if (!isOpen) { setState("idle"); setFieldErr({}); } }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -54,7 +54,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
     if (fieldErr[k]) setFieldErr((x) => ({ ...x, [k]: undefined }));
   };
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
     // Check fields first; say what is wrong next to the field and move focus there (WCAG 3.3.1)
     const errs = {};
@@ -66,28 +66,22 @@ export default function EnquiryModal({ isOpen, onClose }) {
       dialogRef.current?.querySelector(errs.name ? "#enq-name" : "#enq-phone")?.focus();
       return;
     }
-    setState("sending"); setError("");
-    try {
-      const res = await fetch("/api/inquiry/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          phone,
-          message: form.parentName ? `Parent: ${form.parentName}` : "",
-          page: window.location.pathname,
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.success) throw new Error(data.message || "We couldn't send your enquiry online.");
-      setState("sent");
-    } catch (err) {
-      setError(err.message);
-      setState("failed");
-    }
+    const url = enquiryWhatsAppUrl([
+      ["Student", form.name], ["Mobile", phone], ["Exam", form.course], ["Class", form.studentClass],
+      ["Parent", form.parentName], ["Page", window.location.pathname],
+    ]);
+    setWaUrl(url);
+    // Also record the lead (sheet/webhook) when the host has one; WhatsApp is the main channel, so a failure here is ignored.
+    // keepalive lets the request finish while the page navigates to WhatsApp.
+    fetch("/api/inquiry/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({ ...form, phone, message: form.parentName ? `Parent: ${form.parentName}` : "", page: window.location.pathname }),
+    }).catch(() => {});
+    setState("sent");
+    pushToWhatsApp(url);
   };
-
-  const waText = encodeURIComponent(`Hello CSI, I'd like a free counselling session. Name: ${form.name}. Exam: ${form.course}. Class: ${form.studentClass}.`);
 
   return (
     <div className="x-modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -100,8 +94,9 @@ export default function EnquiryModal({ isOpen, onClose }) {
 
         {state === "sent" ? (
           <div className="x-modal-body">
-            <p className="x-modal-ok">Thank you, {form.name}. Our counsellor will call you on {form.phone} shortly.</p>
+            <p className="x-modal-ok" role="status">Thank you, {form.name}. Opening WhatsApp: press Send there and our counsellor will reply.</p>
             <div className="x-ctas" style={{ marginTop: 20 }}>
+              <a className="x-btn x-btn-gold" href={waUrl}>Open WhatsApp</a>
               <button type="button" className="x-btn x-btn-ink" onClick={onClose}>Close</button>
             </div>
           </div>
@@ -133,21 +128,10 @@ export default function EnquiryModal({ isOpen, onClose }) {
             {/* Honeypot for spam bots: hidden from people and screen readers */}
             <input className="x-hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set("website")} />
 
-            {state === "failed" && (
-              <div className="x-modal-err" role="alert">
-                <p>{error}</p>
-                <p>
-                  <a href={`tel:${contact.phonePrimaryRaw}`}>Call {contact.phonePrimary}</a>
-                  {" or "}
-                  <a href={`https://wa.me/${contact.whatsapp}?text=${waText}`} target="_blank" rel="noopener">send it on WhatsApp</a>.
-                </p>
-              </div>
-            )}
-
-            <button type="submit" className="x-btn x-btn-gold" disabled={state === "sending"} style={{ width: "100%", marginTop: 8 }}>
-              {state === "sending" ? "Sending…" : "Book free counselling"}
+            <button type="submit" className="x-btn x-btn-gold" style={{ width: "100%", marginTop: 8 }}>
+              Book free counselling
             </button>
-            <p className="x-modal-note">We use your number only to call you about admission.</p>
+            <p className="x-modal-note">Opens WhatsApp with your details filled in. We use your number only about admission.</p>
           </form>
         )}
       </div>

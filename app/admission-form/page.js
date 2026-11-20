@@ -4,6 +4,7 @@ import { useState } from "react";
 import DocPage from "@/components/site/DocPage";
 import { instituteInfo } from "@/data/instituteData";
 import { normalizeMobile, PHONE_ERROR } from "@/lib/phone";
+import { enquiryWhatsAppUrl, pushToWhatsApp } from "@/lib/whatsapp";
 
 export default function AdmissionFormPage() {
   const [formData, setFormData] = useState({
@@ -19,18 +20,16 @@ export default function AdmissionFormPage() {
     residentialRequired: "No",
     address: ""
   });
-  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
-  const [error, setError] = useState("");
+  const [waUrl, setWaUrl] = useState("");
   const [fieldErr, setFieldErr] = useState({});
   // Field errors are shown under the field, linked with aria-describedby (WCAG 3.3.1)
   const errProps = (k) => fieldErr[k] ? { "aria-invalid": "true", "aria-describedby": `${k}-err` } : {};
   const errText = (k) => fieldErr[k] ? <p id={`${k}-err`} className="x-field-err">{fieldErr[k]}</p> : null;
   const set = (key) => (e) => setFormData({ ...formData, [key]: e.target.value });
 
-  // Map this form's fields to the enquiry API and only show success when delivery is confirmed.
-  const handleSubmit = async (e) => {
+  // Opens the institute's WhatsApp with the application typed in; also posts it to the enquiry API for the sheet/webhook.
+  const handleSubmit = (e) => {
     e.preventDefault();
     const errs = {};
     if (!formData.studentName.trim()) errs["af-student"] = "Enter the student's full name.";
@@ -41,12 +40,16 @@ export default function AdmissionFormPage() {
     setFieldErr(errs);
     const first = Object.keys(errs)[0];
     if (first) { document.getElementById(first)?.focus(); return; }
-    setSubmitting(true);
-    setError("");
-    try {
-      const res = await fetch("/api/inquiry/", {
+    const url = enquiryWhatsAppUrl([
+      ["Admission form for", formData.studentName], ["Parent", formData.parentName], ["Mobile", phone], ["Email", formData.email],
+      ["Exam", formData.targetExam], ["Class", formData.currentClass], ["School", formData.currentSchool],
+      ["Hostel needed", formData.residentialRequired], ["Address", formData.address],
+    ]);
+    setWaUrl(url);
+    fetch("/api/inquiry/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        keepalive: true,
         body: JSON.stringify({
           name: formData.studentName,
           phone,
@@ -62,15 +65,9 @@ export default function AdmissionFormPage() {
           ].filter(Boolean).join(" | "),
           page: "/admission-form/",
         }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.success) throw new Error(data.message || "We couldn't send your form online.");
-      setSubmitted(true);
-    } catch (err) {
-      setError(`${err.message} Please call or WhatsApp us on 94224 75665.`);
-    } finally {
-      setSubmitting(false);
-    }
+    }).catch(() => {});
+    setSubmitted(true);
+    pushToWhatsApp(url);
   };
 
   const c = instituteInfo.contact;
@@ -97,12 +94,12 @@ export default function AdmissionFormPage() {
               label: "Application received",
               body: (
                 <div role="status">
-                  <h2 style={{ margin: "0 0 8px", fontSize: 24 }}>Application Submitted Successfully!</h2>
+                  <h2 style={{ margin: "0 0 8px", fontSize: 24 }}>One last step: press Send on WhatsApp</h2>
                   <p>
-                    Thank you, <strong>{formData.studentName}</strong>. Your admission inquiry has been logged in our system. Director Mrs. Meghana Marchatwar&apos;s team will contact you at <strong>{formData.phone}</strong> shortly.
+                    Thank you, <strong>{formData.studentName}</strong>. WhatsApp is opening with your application filled in. Press Send, and Director Mrs. Meghana Marchatwar&apos;s team will contact you at <strong>{formData.phone}</strong>.
                   </p>
                   <div className="x-ctas" style={{ marginTop: 16 }}>
-                    <a className="x-btn x-btn-ink x-btn-sm" href={`https://wa.me/${c.whatsappNumber}?text=Hi%20Century%20Science%20Institute,%20I%20have%20submitted%20admission%20form%20for%20${encodeURIComponent(formData.studentName)}`} target="_blank" rel="noopener noreferrer">Confirm via WhatsApp</a>
+                    <a className="x-btn x-btn-gold x-btn-sm" href={waUrl}>Open WhatsApp</a>
                     <a className="x-btn x-btn-line-ink x-btn-sm" href={`tel:${c.phoneRaw}`}>Call Center Office</a>
                   </div>
                 </div>
@@ -171,10 +168,10 @@ export default function AdmissionFormPage() {
                     <label htmlFor="af-address">Current Residential Address in Nagpur or District</label>
                     <textarea id="af-address" rows={2} placeholder="Enter city / area" value={formData.address} onChange={set("address")} />
                   </div>
-                  {error && <p role="alert" className="x-modal-err" style={{ margin: 0 }}>{error}</p>}
-                  <button type="submit" className="x-btn x-btn-gold" disabled={submitting} style={{ width: "100%" }}>
-                    {submitting ? "Submitting Application..." : "Submit Admission Application"}
+                  <button type="submit" className="x-btn x-btn-gold" style={{ width: "100%" }}>
+                    Submit Admission Application
                   </button>
+                  <p className="x-modal-note" style={{ margin: 0 }}>Opens WhatsApp with your application filled in. Press Send to submit it to the institute.</p>
                 </form>
               ),
             },
