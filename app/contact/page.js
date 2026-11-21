@@ -104,13 +104,13 @@ export default function ContactPage() {
               <div className="gh-map">
                 <iframe
                   title="Century Science Institute Location Map Nagpur"
-                  src="https://maps.google.com/maps?q=21.109374,79.1164391&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
+                  src={gmb.embedUrl}
+                  width="600"
+                  height="450"
+                  style={{ border: 0, width: "100%", height: "100%" }}
                   allowFullScreen=""
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                 />
               </div>
               <p className="gh-box-foot" style={{ color: "var(--ink-2)" }}>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { courses, programs, contact } from "@/data/site";
+import { courses, programs, contact, gmb } from "@/data/site";
 
 export default function SiteFooter() {
   return (
@@ -41,8 +41,21 @@ export default function SiteFooter() {
               <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
               <li><Link href="/contact/">Directions</Link></li>
               <li><Link href="/admission-form/">Admission form</Link></li>
+              <li><a href={gmb.reviewsUrl} target="_blank" rel="noopener noreferrer">{gmb.rating} ★ ({gmb.reviewCount} Google reviews)</a></li>
             </ul>
           </div>
+        </div>
+        <div className="x-fmap">
+          <iframe
+            title="Century Science Institute on Google Maps"
+            src={gmb.embedUrl}
+            width="600"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
         </div>
         <p className="x-fine">© {new Date().getFullYear()} Century Science Institute, {contact.address}.</p>
       </div>

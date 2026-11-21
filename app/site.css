@@ -239,6 +239,8 @@ body.site {
 .x-footer a:hover { color: var(--canvas); text-decoration: underline; }
 .x-flogo { width: 168px; height: auto; background: var(--paper); padding: 12px; }
 .x-fbrand p { margin: 14px 0 0; max-width: 34ch; }
+.x-fmap { margin-top: 32px; border: 1px solid rgba(248,250,252,.12); overflow: hidden; }
+.x-fmap iframe { display: block; width: 100%; height: 220px; border: 0; }
 .x-fine { margin: 40px 0 0; padding-top: 20px; border-top: 1px solid rgba(248,250,252,.1); font-size: 13.5px; color: var(--muted); }
 
 /* ---------- Mobile dock ---------- */

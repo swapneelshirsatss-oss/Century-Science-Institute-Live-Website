@@ -29,6 +29,7 @@ export const gmb = {
   kgUrl: "https://www.google.com/search?kgmid=/g/11j4fl243d",
   reviewsUrl: "https://search.google.com/local/reviews?placeid=ChIJQc2MlAy51DsR61N6szGhv60",
   writeReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJQc2MlAy51DsR61N6szGhv60",
+  embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4419.970074708287!2d79.1164391!3d21.109373999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4b90c948ccd41%3A0xadbfa131b37a53eb!2sCentury%20Science%20Institute!5e1!3m2!1sen!2sin!4v1795236609253!5m2!1sen!2sin",
   rating: "4.6",
   reviewCount: 192,
 };
