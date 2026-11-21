@@ -15,9 +15,22 @@ export const contact = {
   phoneSecondaryRaw: "9371922368",
   whatsapp: "919422475665",
   email: "info@centuryscienceinstitute.in",
-  address: "124, Rukhmini Nagar, Ashirwad Nagar Square, near Hanuman Mandir, Hudkeshwar Road, Nagpur 440034",
-  hours: "Monday to Sunday, 8:00 am to 8:30 pm",
-  maps: "https://www.google.com/maps/search/?api=1&query=21.10956917,79.11702919",
+  address: "124, Hudkeshwar Rd, near Hanuman Mandir, Rukmini Nagar, New Subhedar Layout, Ashirwad Nagar, Nagpur, Maharashtra 440024",
+  hours: "Mon–Fri: 6:15 am–9:00 pm · Sat: 7:15 am–9:00 pm · Sun: 8:00 am–8:00 pm",
+  maps: "https://www.google.com/maps/place/?cid=12519902723949876203",
+};
+
+export const gmb = {
+  cid: "12519902723949876203",
+  placeId: "ChIJQc2MlAy51DsR61N6szGhv60",
+  kgId: "/g/11j4fl243d",
+  cidUrl: "https://www.google.com/maps/place/?cid=12519902723949876203",
+  placeIdUrl: "https://www.google.com/maps/place/?q=place_id:ChIJQc2MlAy51DsR61N6szGhv60",
+  kgUrl: "https://www.google.com/search?kgmid=/g/11j4fl243d",
+  reviewsUrl: "https://search.google.com/local/reviews?placeid=ChIJQc2MlAy51DsR61N6szGhv60",
+  writeReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJQc2MlAy51DsR61N6szGhv60",
+  rating: "4.6",
+  reviewCount: 192,
 };
 
 export const featuredTopper = {

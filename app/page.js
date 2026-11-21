@@ -6,7 +6,7 @@ import PhotoSlot from "@/components/site/PhotoSlot";
 import TestCalendar from "@/components/site/TestCalendar";
 import Ticker from "@/components/site/Ticker";
 import VideoRail from "@/components/site/VideoRail";
-import { contact, courses, director, featuredTopper, tickerItems, toppers, videos, youtubeChannel } from "@/data/site";
+import { contact, courses, director, featuredTopper, gmb, tickerItems, toppers, videos, youtubeChannel } from "@/data/site";
 import { photos } from "@/data/photos";
 import { DEFAULT_OG_IMAGE, JsonLd, SITE } from "@/lib/schema";
 
@@ -234,6 +234,7 @@ export default function HomePage() {
             <div><dt>Address</dt><dd>{contact.address}</dd></div>
             <div><dt>Open</dt><dd>{contact.hours}</dd></div>
             <div><dt>Call</dt><dd><a href={`tel:${contact.phonePrimaryRaw}`}>{contact.phonePrimary}</a></dd></div>
+            <div><dt>Reviews</dt><dd><a href={gmb.reviewsUrl} target="_blank" rel="noopener">{gmb.rating} ★ ({gmb.reviewCount} Google reviews)</a></dd></div>
             <div><dt>Directions</dt><dd><a href={contact.maps} target="_blank" rel="noopener">Open in Google Maps</a></dd></div>
           </dl>
         </div>

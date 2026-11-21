@@ -4,17 +4,17 @@ export const instituteInfo = {
   tagline: "Top NEET, JEE & MHT-CET Coaching in Nagpur",
   description: "Century Science Institute offers expert NEET, JEE, and MHT-CET coaching in Nagpur. 15+ years of teaching experience, directors who teach, Double Teaching Concept, comprehensive study materials, and proven top rankers.",
   address: {
-    street: "124, Rukhmini Nagar, Ashirwad Nagar Square, Near Hanuman Mandir, Hudkeshwar Road",
+    street: "124, Hudkeshwar Rd, near Hanuman Mandir, Rukmini Nagar, New Subhedar Layout, Ashirwad Nagar",
     city: "Nagpur",
     state: "Maharashtra",
-    postalCode: "440034",
+    postalCode: "440024",
     country: "India",
     countryCode: "+91",
     geo: {
-      latitude: "21.10956917",
-      longitude: "79.11702919"
+      latitude: "21.109374",
+      longitude: "79.1164391"
     },
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=21.10956917,79.11702919"
+    googleMapsUrl: "https://www.google.com/maps/place/?cid=12519902723949876203"
   },
   contact: {
     phonePrimary: "+91 9422475665",
@@ -22,7 +22,7 @@ export const instituteInfo = {
     phoneRaw: "9422475665",
     whatsappNumber: "919422475665",
     email: "info@centuryscienceinstitute.in",
-    workingHours: "Monday to Sunday: 8:00 AM - 8:30 PM"
+    workingHours: "Mon–Fri: 6:15 AM – 9:00 PM | Sat: 7:15 AM – 9:00 PM | Sun: 8:00 AM – 8:00 PM"
   },
   social: {
     facebook: "https://www.facebook.com/CenturyScienceinstitutenagpur",

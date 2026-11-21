@@ -1,17 +1,18 @@
 import Link from "next/link";
 import DocPage from "@/components/site/DocPage";
 import { instituteInfo } from "@/data/instituteData";
+import { gmb } from "@/data/site";
 import { DEFAULT_OG_IMAGE, SITE } from "@/lib/schema";
 
 export const metadata = {
   title: "Contact Century Science Institute – Hudkeshwar Road Nagpur",
-  description: "Contact Century Science Institute Nagpur. Center address: 124, Rukhmini Nagar, Ashirwad Nagar Square, Hudkeshwar Road, Nagpur. Phone: +91 9422475665.",
+  description: "Contact Century Science Institute Nagpur. Address: 124, Hudkeshwar Rd, near Hanuman Mandir, Rukmini Nagar, New Subhedar Layout, Ashirwad Nagar, Nagpur 440024. Phone: +91 9422475665.",
   alternates: {
     canonical: "https://centuryscienceinstitute.in/contact/"
   },
   openGraph: {
     title: "Contact Century Science Institute – Hudkeshwar Road Nagpur",
-    description: "Visit Century Science Institute at 124, Rukhmini Nagar, Ashirwad Nagar Square, Hudkeshwar Road, Nagpur. Call +91 94224 75665.",
+    description: "Visit Century Science Institute at 124, Hudkeshwar Rd, near Hanuman Mandir, Rukmini Nagar, New Subhedar Layout, Ashirwad Nagar, Nagpur 440024. Call +91 94224 75665.",
     url: "https://centuryscienceinstitute.in/contact/",
     images: [DEFAULT_OG_IMAGE],
   }
@@ -72,6 +73,16 @@ export default function ContactPage() {
                   </span>
                 </li>
                 <li>
+                  <strong>Google Business Profile &amp; Reviews</strong>
+                  <span>
+                    {gmb.rating} ★ ({gmb.reviewCount} verified Google reviews) · Women-owned coaching center
+                    <br />
+                    <a className="gh-inline" href={gmb.reviewsUrl} target="_blank" rel="noopener noreferrer">Read Google Reviews</a>
+                    {" · "}
+                    <a className="gh-inline" href={gmb.writeReviewUrl} target="_blank" rel="noopener noreferrer">Write a Review</a>
+                  </span>
+                </li>
+                <li>
                   <strong>Working Hours</strong>
                   <span>
                     {c.workingHours}
@@ -93,7 +104,7 @@ export default function ContactPage() {
               <div className="gh-map">
                 <iframe
                   title="Century Science Institute Location Map Nagpur"
-                  src="https://maps.google.com/maps?q=21.10956917,79.11702919&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=21.109374,79.1164391&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -103,7 +114,7 @@ export default function ContactPage() {
                 />
               </div>
               <p className="gh-box-foot" style={{ color: "var(--ink-2)" }}>
-                Landmark: Near Hanuman Mandir, Ashirwad Nagar Square, Hudkeshwar Road, Nagpur - 440034.
+                Landmark: Near Hanuman Mandir, Rukmini Nagar, New Subhedar Layout, Ashirwad Nagar, Hudkeshwar Rd, Nagpur - 440024.
               </p>
             </>
           ),
