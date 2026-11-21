@@ -57,7 +57,10 @@ export default function SiteFooter() {
             referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
-        <p className="x-fine">© {new Date().getFullYear()} Century Science Institute, {contact.address}.</p>
+        <p className="x-fine">
+          © {new Date().getFullYear()} Century Science Institute, {contact.address}. · Website created by{" "}
+          <a href="https://growguest.in/" target="_blank" rel="noopener noreferrer">GrowGuest</a>
+        </p>
       </div>
     </footer>
   );
